@@ -1,0 +1,13 @@
+F:\myopensource\controlTest\controlTest\bin\Debug\controlTest.exe.config
+F:\myopensource\controlTest\controlTest\bin\Debug\controlTest.exe
+F:\myopensource\controlTest\controlTest\bin\Debug\controlTest.pdb
+F:\myopensource\controlTest\controlTest\obj\Debug\MainWindow.g.cs
+F:\myopensource\controlTest\controlTest\obj\Debug\App.g.cs
+F:\myopensource\controlTest\controlTest\obj\Debug\controlTest_MarkupCompile.cache
+F:\myopensource\controlTest\controlTest\obj\Debug\controlTest_MarkupCompile.lref
+F:\myopensource\controlTest\controlTest\obj\Debug\MainWindow.baml
+F:\myopensource\controlTest\controlTest\obj\Debug\controlTest.g.resources
+F:\myopensource\controlTest\controlTest\obj\Debug\controlTest.Properties.Resources.resources
+F:\myopensource\controlTest\controlTest\obj\Debug\controlTest.csproj.GenerateResource.Cache
+F:\myopensource\controlTest\controlTest\obj\Debug\controlTest.exe
+F:\myopensource\controlTest\controlTest\obj\Debug\controlTest.pdb
