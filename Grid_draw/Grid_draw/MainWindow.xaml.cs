@@ -27,9 +27,23 @@ namespace Grid_draw
 
         void Render()
         {
-            drawmap.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(20)});
-            drawmap.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(20) });        
-
+            for(int i = 0; i<3; i++)
+            {
+                drawmap.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(20) });
+            }
+            for(int i = 0; i < 10; i++)
+            {
+                drawmap.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(20) });
+            }
+            for(int i = 0; i<10; i++)
+            {
+                Rectangle childGrid = new Rectangle() { Height = 20, Width = 20 };
+                Color color1 = (Color)ColorConverter.ConvertFromString("Blue");
+                childGrid.Fill = new SolidColorBrush { Color = color1 };
+                drawmap.Children.Add(childGrid);
+                childGrid.SetValue(Grid.RowProperty, 0);
+                childGrid.SetValue(Grid.ColumnProperty, i);
+            }
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -41,6 +55,7 @@ namespace Grid_draw
         {
             MessageBox.Show(Convert.ToString(drawmap.RowDefinitions.Count) );
 
+            /*
             Grid childGrid = new Grid() { Height = 20, Width = 20 };
             childGrid.Background = new SolidColorBrush { Color = new Color {A = 255 , R = 100 , G=0 , B = 200} };
 
@@ -53,6 +68,7 @@ namespace Grid_draw
             drawmap.Children.Add(childGrid);
             childGrid.SetValue(Grid.RowProperty, 2);
             childGrid.SetValue(Grid.ColumnProperty, 3);
+            */
         }
     }
 }

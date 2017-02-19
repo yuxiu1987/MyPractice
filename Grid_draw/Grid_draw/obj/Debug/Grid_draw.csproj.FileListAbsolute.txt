@@ -12,3 +12,17 @@ E:\myopensource\Grid_draw\Grid_draw\obj\Debug\Grid_draw.Properties.Resources.res
 E:\myopensource\Grid_draw\Grid_draw\obj\Debug\Grid_draw.csproj.GenerateResource.Cache
 E:\myopensource\Grid_draw\Grid_draw\obj\Debug\Grid_draw.exe
 E:\myopensource\Grid_draw\Grid_draw\obj\Debug\Grid_draw.pdb
+E:\myopensource\MyPractice\Grid_draw\Grid_draw\bin\Debug\Grid_draw.exe.config
+E:\myopensource\MyPractice\Grid_draw\Grid_draw\bin\Debug\Grid_draw.exe
+E:\myopensource\MyPractice\Grid_draw\Grid_draw\bin\Debug\Grid_draw.pdb
+E:\myopensource\MyPractice\Grid_draw\Grid_draw\obj\Debug\Grid_draw.csprojResolveAssemblyReference.cache
+E:\myopensource\MyPractice\Grid_draw\Grid_draw\obj\Debug\MainWindow.g.cs
+E:\myopensource\MyPractice\Grid_draw\Grid_draw\obj\Debug\App.g.cs
+E:\myopensource\MyPractice\Grid_draw\Grid_draw\obj\Debug\Grid_draw_MarkupCompile.cache
+E:\myopensource\MyPractice\Grid_draw\Grid_draw\obj\Debug\Grid_draw_MarkupCompile.lref
+E:\myopensource\MyPractice\Grid_draw\Grid_draw\obj\Debug\MainWindow.baml
+E:\myopensource\MyPractice\Grid_draw\Grid_draw\obj\Debug\Grid_draw.g.resources
+E:\myopensource\MyPractice\Grid_draw\Grid_draw\obj\Debug\Grid_draw.Properties.Resources.resources
+E:\myopensource\MyPractice\Grid_draw\Grid_draw\obj\Debug\Grid_draw.csproj.GenerateResource.Cache
+E:\myopensource\MyPractice\Grid_draw\Grid_draw\obj\Debug\Grid_draw.exe
+E:\myopensource\MyPractice\Grid_draw\Grid_draw\obj\Debug\Grid_draw.pdb

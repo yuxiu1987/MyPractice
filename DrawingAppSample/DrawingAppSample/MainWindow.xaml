@@ -1,0 +1,22 @@
+﻿<Window x:Class="DrawingAppSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DrawingAppSample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="370" Background="Brown">
+    <Grid>
+        <InkCanvas x:Name="inkcanvas" HorizontalAlignment="Stretch" Height="auto" VerticalAlignment="Stretch" Width="auto" Margin="9,9,9,68"/>
+        <Button x:Name="clearButton" Content="Clear" HorizontalAlignment="Left" Height="25" Margin="10,484.638,0,0" VerticalAlignment="Top" Width="100" Click="clearButton_Click"/>
+        <Button x:Name="closeButton" Content="Close" HorizontalAlignment="Left" Height="25" Margin="252,484.638,0,0" VerticalAlignment="Top" Width="100" Click="closeButton_Click"/>
+        <StackPanel x:Name="stack" Background="White" Height="22" Margin="10,457.638,260.557,0" Width="90" VerticalAlignment="Top" Orientation="Horizontal">
+            <Rectangle x:Name="red" Height="20" Width="20" Fill="Red" Margin="2,1,0,1" MouseLeftButtonDown="red_MouseLeftButtonDown"  />
+            <Rectangle x:Name="green" Height="20" Width="20" Fill="Green" Margin="2,1,0,1" MouseLeftButtonDown="green_MouseLeftButtonDown"/>
+            <Rectangle x:Name="yellow" Height="20" Width="20" Fill="Yellow" Margin="2,1,0,1" MouseLeftButtonDown="yellow_MouseLeftButtonDown"/>
+            <Rectangle x:Name="blue" Height="20" Width="20" Fill="Blue" Margin="2,1,0,1" MouseLeftButtonDown="blue_MouseLeftButtonDown"/>
+        </StackPanel>
+        <Rectangle x:Name="strokecolor" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="40" Margin="156,458,0,0" Stroke="Black" VerticalAlignment="Top" Width="40"/>
+
+    </Grid>
+</Window>
