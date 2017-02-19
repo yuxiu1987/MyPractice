@@ -31,7 +31,6 @@ namespace DragAndDropSample
 
         //获取开始点
         Point startmousepos;
-
         private void rec_MouseDown(object sender, MouseButtonEventArgs e)
         {
             startmousepos.X = e.GetPosition(this).X;
@@ -48,11 +47,14 @@ namespace DragAndDropSample
                 var rectemp = sender as Rectangle;
                 var margin = rectemp.Margin;
                 var pos = e.GetPosition(this);
+                e.MouseDevice.Capture(rec);
                 double dx = pos.X - startmousepos.X;
                 margin.Left += dx;
+                margin.Right -= dx;
                 rectemp.Margin = margin;
                 startmousepos = pos;
             }
+            else { e.MouseDevice.Capture(null); }
         }        
 
         void CreateFlight()
