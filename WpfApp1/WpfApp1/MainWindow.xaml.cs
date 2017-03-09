@@ -26,15 +26,18 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-
-
         }
 
         public Flight thisflight { get; set; } = new Flight { FlightNumber = 1001, Code = "SLD" };
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            thisflight.ScheduledFLight.Clear();
+            thisflight.FlightTable.Clear();
+            for(int i = 0; i<thisflight.FlightTable.Length;i++)
+            {
+                thisflight.FlightTable[i].ScheduledFlight = Schedule
+            }
+
             Schedule mon = Schedule.Mon;
             Schedule wed = Schedule.Wed;
             Schedule fri = Schedule.Fri;
@@ -68,14 +71,11 @@ namespace WpfApp1
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            /*
+        {            
             Binding bd = new Binding();
             bd.Source = thisflight.FlightTable;
             bd.Mode = BindingMode.OneWay;
             SetBinding(DataContextProperty, bd);
-            */
-            grid.DataContext = thisflight.FlightTable;
         }
     }
 
@@ -84,11 +84,10 @@ namespace WpfApp1
         public int FlightNumber { get; set; }
         public string Code { get; set; }
         public string FullNumber { get { return Code + Convert.ToString(FlightNumber); } }
+        public Schedule ScheduledFlight;
 
-        public BindingList<Schedule> ScheduledFLight { get; set; } = new BindingList<Schedule>();
-
-        public bool[] FlightTable { get { return _FlightTable; } set { SetProperty(ref _FlightTable, value);  } }
-        private bool[] _FlightTable = new bool[7];
+        public Flight[] FlightTable { get { return _FlightTable; } set { SetProperty(ref _FlightTable, value);  } }
+        private Flight[] _FlightTable = new Flight[7];
         
 
     }
