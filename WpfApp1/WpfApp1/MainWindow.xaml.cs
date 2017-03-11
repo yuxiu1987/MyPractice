@@ -21,76 +21,77 @@ namespace WpfApp1
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window 
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
         }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Binding bd = new Binding();
+            bd.Source = SLD1001Table;
+            bd.Mode = BindingMode.OneWay;
+            SetBinding(DataContextProperty, bd);        
+        }
 
-        public Flight thisflight { get; set; } = new Flight { FlightNumber = 1001, Code = "SLD" };
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            thisflight.FlightTable.Clear();
-            for(int i = 0; i<thisflight.FlightTable.Length;i++)
+            SLD1001Table.ClearTable();
+            for(int i =0;i<5;i=i+2)
             {
-                thisflight.FlightTable[i].ScheduledFlight = Schedule
-            }
-
-            Schedule mon = Schedule.Mon;
-            Schedule wed = Schedule.Wed;
-            Schedule fri = Schedule.Fri;
-
-            thisflight.ScheduledFLight.Add(mon);
-            thisflight.ScheduledFLight.Add(wed);
-            thisflight.ScheduledFLight.Add(fri);
-
-            foreach(Schedule s in thisflight.ScheduledFLight)
-            {
-                thisflight.FlightTable[(int)s] = true;
+                //INT-->ENUM
+                SLD1001Table.ThisFlightTable[i].ScheduledFlight = (Schedule)(Enum.ToObject(typeof(Schedule), i));
             }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            thisflight.ScheduledFLight.Clear();
-            Schedule tue = Schedule.Tue;
-            Schedule thu = Schedule.Thu;
-            Schedule sat = Schedule.Sat;
-
-            thisflight.ScheduledFLight.Add(tue);
-            thisflight.ScheduledFLight.Add(thu);
-            thisflight.ScheduledFLight.Add(sat);
-
-            foreach (Schedule s in thisflight.ScheduledFLight)
-            {
-                thisflight.FlightTable[(int)s] = true;
-            }
-
+            SLD1001Table.ClearTable();
+            SLD1001Table.ThisFlightTable[1].ScheduledFlight = Schedule.Tue;
+            SLD1001Table.ThisFlightTable[3].ScheduledFlight = Schedule.Thu;
+            SLD1001Table.ThisFlightTable[5].ScheduledFlight = Schedule.Sat;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {            
-            Binding bd = new Binding();
-            bd.Source = thisflight.FlightTable;
-            bd.Mode = BindingMode.OneWay;
-            SetBinding(DataContextProperty, bd);
-        }
+        public FlightTable SLD1001Table { get; set; } =
+            new FlightTable(new Flight { FlightNumber = 1001, Code = "SLD", ScheduledFlight = Schedule.Null });
     }
 
-    public class Flight :Bindable
+    public class Flight : Bindable
     {
         public int FlightNumber { get; set; }
         public string Code { get; set; }
         public string FullNumber { get { return Code + Convert.ToString(FlightNumber); } }
-        public Schedule ScheduledFlight;
-
-        public Flight[] FlightTable { get { return _FlightTable; } set { SetProperty(ref _FlightTable, value);  } }
-        private Flight[] _FlightTable = new Flight[7];
-        
-
+        public Schedule ScheduledFlight { get { return _ScheduledFlight; } set { SetProperty(ref _ScheduledFlight, value); } }
+        private Schedule _ScheduledFlight;
     }
+
+    public class FlightTable:Bindable
+    {
+        public FlightTable(Flight flimodel)
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                Flight fli = new Flight { FlightNumber = flimodel.FlightNumber,
+                    Code = flimodel.Code, ScheduledFlight = flimodel.ScheduledFlight
+                };
+                ThisFlightTable.Add(fli);
+            }
+        }
+
+        public List<Flight> ThisFlightTable { get; set; } = new List<Flight>();
+
+        public void ClearTable()
+        {
+            foreach(Flight f in ThisFlightTable)
+            {
+                f.ScheduledFlight = Schedule.Null;
+            }
+
+        }
+    }
+        
     public enum Schedule : int { Mon = 0, Tue, Wed, Thu, Fri, Sat, Sun, Null }
 
     public abstract class Bindable : INotifyPropertyChanged

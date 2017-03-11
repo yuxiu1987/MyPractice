@@ -35,13 +35,13 @@
             <Label Content="D6" Grid.Row="5" Style="{Binding Source={StaticResource label1}}"/>
             <Label Content="D7" Grid.Row="6" Style="{Binding Source={StaticResource label1}}"/>
 
-            <Label Content="{Binding Path=[0]}" Style="{Binding Source={StaticResource label1}}" Grid.Column="1" />
-            <Label Content="{Binding Path=[1]}" Grid.Row="1" Style="{Binding Source={StaticResource label1}}" Grid.Column="1"/>
-            <Label Content="{Binding Path=[2]}" Grid.Row="2" Style="{Binding Source={StaticResource label1}}"  Grid.Column="1"/>
-            <Label Content="{Binding Path=[3]}" Grid.Row="3" Style="{Binding Source={StaticResource label1}}"  Grid.Column="1"/>
-            <Label Content="{Binding Path=[4]}" Grid.Row="4" Style="{Binding Source={StaticResource label1}}"  Grid.Column="1"/>
-            <Label Content="{Binding Path=[5]}" Grid.Row="5" Style="{Binding Source={StaticResource label1}}"  Grid.Column="1"/>
-            <Label Content="{Binding Path=[6]}" Grid.Row="6" Style="{Binding Source={StaticResource label1}}"  Grid.Column="1"/>
+            <Label Content="{Binding ThisFlightTable[0].ScheduledFlight}" Style="{Binding Source={StaticResource label1}}" Grid.Column="1" />
+            <Label Content="{Binding ThisFlightTable[1].ScheduledFlight}" Grid.Row="1" Style="{Binding Source={StaticResource label1}}" Grid.Column="1"/>
+            <Label Content="{Binding ThisFlightTable[2].ScheduledFlight}" Grid.Row="2" Style="{Binding Source={StaticResource label1}}"  Grid.Column="1"/>
+            <Label Content="{Binding ThisFlightTable[3].ScheduledFlight}" Grid.Row="3" Style="{Binding Source={StaticResource label1}}"  Grid.Column="1"/>
+            <Label Content="{Binding ThisFlightTable[4].ScheduledFlight}" Grid.Row="4" Style="{Binding Source={StaticResource label1}}"  Grid.Column="1"/>
+            <Label Content="{Binding ThisFlightTable[5].ScheduledFlight}" Grid.Row="5" Style="{Binding Source={StaticResource label1}}"  Grid.Column="1"/>
+            <Label Content="{Binding ThisFlightTable[6].ScheduledFlight}" Grid.Row="6" Style="{Binding Source={StaticResource label1}}"  Grid.Column="1"/>
         </Grid>
         <StackPanel HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="417,0,0,0">
 
