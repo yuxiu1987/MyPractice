@@ -48,6 +48,16 @@
         </StackPanel>
         <Button Content="Set135" HorizontalAlignment="Left" Margin="417,255,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button Content="Set246" HorizontalAlignment="Left" Margin="417,279,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <Button x:Name="daysettle" Content="DaySettle" HorizontalAlignment="Left" Margin="187,279,0,0" VerticalAlignment="Top" Width="75" Click="daysettle_Click"/>
+        <Label  Content="TotalDays:" HorizontalAlignment="Left" Margin="222,0,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="totaldayslabel" Content="{Binding TotalDays}" HorizontalAlignment="Left" Margin="296,0,0,0" VerticalAlignment="Top"/>
+        <Label Content="Day:" HorizontalAlignment="Left" Margin="222,30,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="currentday" Content="{Binding CurrentDay}" HorizontalAlignment="Left" Margin="296,30,0,0" VerticalAlignment="Top"/>
+        <Label  Content="Scheduled" HorizontalAlignment="Left" Margin="222,60,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="flightlabel" Content="{Binding ScheduledFlight}" HorizontalAlignment="Left" Margin="321,60,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="settle30day" Content="Settle30" HorizontalAlignment="Left" Margin="187,255,0,0" VerticalAlignment="Top" Width="75" Click="settle30day_Click"/>
+        <Label  Content="TotalIncome" HorizontalAlignment="Left" Margin="222,83,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="totalincomelabel"  HorizontalAlignment="Left" Margin="321,83,0,0" VerticalAlignment="Top"/>
 
 
 

@@ -32,10 +32,14 @@ namespace WpfApp1
             Binding bd = new Binding();
             bd.Source = SLD1001Table;
             bd.Mode = BindingMode.OneWay;
-            SetBinding(DataContextProperty, bd);        
+            SetBinding(DataContextProperty, bd);
+            grid.DataContext = SLD1001Table;
+
+            totaldayslabel.DataContext = myDate;
+            currentday.DataContext = myDate;
+
+            DaySettleEvent += DaySettleMethod;
         }
-
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             SLD1001Table.ClearTable();
@@ -54,17 +58,56 @@ namespace WpfApp1
             SLD1001Table.ThisFlightTable[5].ScheduledFlight = Schedule.Sat;
         }
 
+        public void DaySettleMethod(object sender, Flight fli)
+        {
+            Flight TodayFlight = fli;
+            flightlabel.DataContext = TodayFlight;
+            if(TodayFlight.ScheduledFlight != Schedule.Null)
+            {
+                TotalIncome = TodayFlight.income + TotalIncome;
+            }
+        }
+
+        private void daysettle_Click(object sender, RoutedEventArgs e)
+        {
+            myDate.SetCurrentDay();
+            DaySettleEvent(this, SLD1001Table.ThisFlightTable[myDate.CurrentDay]);
+            myDate.TotalDays++;
+            totalincomelabel.Content = TotalIncome;
+        }
+
+        private void settle30day_Click(object sender, RoutedEventArgs e)
+        {
+            for(int i=0; i<30; i++)
+            {                
+                myDate.SetCurrentDay();
+                DaySettleEvent(this, SLD1001Table.ThisFlightTable[myDate.CurrentDay]);
+                myDate.TotalDays++;
+                totalincomelabel.Content = TotalIncome;
+            }
+        }
+
         public FlightTable SLD1001Table { get; set; } =
-            new FlightTable(new Flight { FlightNumber = 1001, Code = "SLD", ScheduledFlight = Schedule.Null });
+            new FlightTable(new Flight { FlightNumber = 1001, Code = "SLD", ScheduledFlight = Schedule.Null });        
+
+        public MyDate myDate { get; set; } = new MyDate { TotalDays = 1 };
+
+        public int TotalIncome { get; set; } = 0;
+
+        public event DaySettleHandle DaySettleEvent;
+
+
     }
 
     public class Flight : Bindable
     {
         public int FlightNumber { get; set; }
+
         public string Code { get; set; }
         public string FullNumber { get { return Code + Convert.ToString(FlightNumber); } }
         public Schedule ScheduledFlight { get { return _ScheduledFlight; } set { SetProperty(ref _ScheduledFlight, value); } }
         private Schedule _ScheduledFlight;
+        public int income { get; set; } = 1000;
     }
 
     public class FlightTable:Bindable
@@ -82,17 +125,41 @@ namespace WpfApp1
 
         public List<Flight> ThisFlightTable { get; set; } = new List<Flight>();
 
+
         public void ClearTable()
         {
             foreach(Flight f in ThisFlightTable)
             {
                 f.ScheduledFlight = Schedule.Null;
             }
-
         }
     }
-        
+
+    //日期类
+    public class MyDate:Bindable
+    {
+        public int TotalDays { get { return _TotalDays; } set { SetProperty(ref (_TotalDays), value); } }
+        private int _TotalDays;
+
+        public int CurrentDay { get { return _CurrentDay; }
+            set { SetProperty(ref(_CurrentDay), value); } }
+        private int _CurrentDay;
+
+        public void SetCurrentDay()
+        {
+            CurrentDay = TotalDays % 7;
+        }
+    }
+
+    //周计划
+    public class WeeklyScheduled
+    {
+        public BindingList<FlightTable> WeeklyTableList { get; set; } = new BindingList<FlightTable>();
+    }
+
+
     public enum Schedule : int { Mon = 0, Tue, Wed, Thu, Fri, Sat, Sun, Null }
+    public delegate void DaySettleHandle(object sender , Flight fli);
 
     public abstract class Bindable : INotifyPropertyChanged
     {
