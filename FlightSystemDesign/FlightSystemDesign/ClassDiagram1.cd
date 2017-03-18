@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FlightSystemDesign.App" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSystemDesign.Bindable" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bindabel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FlightSystemDesign.Flight">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAABAAAAAAgEAAAACAAgAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Classes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSystemDesign.DayTotalFlight" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSystemDesign.MyDate">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="FlightSystemDesign.MyDate.DaySettlementHandle" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>InstanceClasses.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="FlightSystemDesign.MyDate.WeekSettlementHandle" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>InstanceClasses.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAERAAAAAgBBQAAAAAAAAQAAEAAAEAAA=</HashCode>
+      <FileName>InstanceClasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSystemDesign.DoubleWeeklyScheduled" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAQAAAAAQAAQAAAAAAAAAA=</HashCode>
+      <FileName>InstanceClasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSystemDesign.Settlement" Collapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAACAAAAAAAAAAAAAAAAQCAAAAAQAAA=</HashCode>
+      <FileName>InstanceClasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSystemDesign.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAIAIAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FlightSystemDesign.Properties.Resources" Collapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightSystemDesign.Properties.Settings" Collapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="FlightSystemDesign.DayOfWeek" Collapsed="true">
+    <Position X="9.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAARAAAAAAAAAAAAAQAAEAAAAIEAAAAAIQ=</HashCode>
+      <FileName>Classes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
