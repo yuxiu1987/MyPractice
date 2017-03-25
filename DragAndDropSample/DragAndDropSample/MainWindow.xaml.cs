@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.ComponentModel;
 
 namespace DragAndDropSample
 {
@@ -24,59 +23,38 @@ namespace DragAndDropSample
         public MainWindow()
         {
             InitializeComponent();
-            CreateFlight();            
         }
 
-        public BindingList<Flight> FlightList { get; set; } = new BindingList<Flight>();
-
-        //获取开始点
-        Point startmousepos;
-        private void rec_MouseDown(object sender, MouseButtonEventArgs e)
+        private void label_MouseMove(object sender, MouseEventArgs e)
         {
-            startmousepos.X = e.GetPosition(this).X;
-        }
-        private void rec_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            
-        }
-        
-        private void rec_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
+            var _label = sender as Label;
+            if((_label != null) && e.LeftButton == MouseButtonState.Pressed)
             {
-                var rectemp = sender as Rectangle;
-                var margin = rectemp.Margin;
-                var pos = e.GetPosition(this);
-                e.MouseDevice.Capture(rec);
-                double dx = pos.X - startmousepos.X;
-                margin.Left += dx;
-                margin.Right -= dx;
-                rectemp.Margin = margin;
-                startmousepos = pos;
+                DragDrop.DoDragDrop(label, label.Content.ToString(), DragDropEffects.Copy);
             }
-            else { e.MouseDevice.Capture(null); }
-        }        
-
-        void CreateFlight()
-        {
-            Flight f1 = new Flight { FLNum = 1001, Depart = "PEK", Arrival = "PVG", Length = 150 };
-            Flight f2 = new Flight { FLNum = 1002, Depart = "PVG", Arrival = "PEK", Length = 150 };
-            Flight f3 = new Flight { FLNum = 1003, Depart = "PEK", Arrival = "CTU", Length = 150 };
-            Flight f4 = new Flight { FLNum = 1004, Depart = "CTU", Arrival = "PEK", Length = 150 };
-            FlightList.Add(f1);
-            FlightList.Add(f2);
-            FlightList.Add(f3);
-            FlightList.Add(f4);
         }
 
+        private void listbox_DragEnter(object sender, DragEventArgs e)
+        {
 
-    }
+        }
 
-    public class Flight
-    {
-        public int FLNum { get; set; }
-        public string Depart { get; set; }
-        public string Arrival { get; set; }
-        public int Length { get; set; }
+        private void listbox_DragLeave(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void listbox_DragOver(object sender, DragEventArgs e)
+        {
+            var list = sender as ListBox;
+            e.Effects = DragDropEffects.Copy;
+        }
+
+        private void listbox_Drop(object sender, DragEventArgs e)
+        {
+            var list = sender as ListBox;
+            var str = e.Data.GetData(DataFormats.StringFormat);
+            list.Items.Add(str);
+        }
     }
 }

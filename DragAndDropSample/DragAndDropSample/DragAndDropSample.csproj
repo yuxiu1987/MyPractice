@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{70DFDA2B-5F5D-47E5-9164-39F1AC6697BF}</ProjectGuid>
+    <ProjectGuid>{134A2BBF-A0E1-4A2E-B778-2C49FBF6E753}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>DragAndDropSample</RootNamespace>
     <AssemblyName>DragAndDropSample</AssemblyName>

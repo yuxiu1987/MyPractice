@@ -1,0 +1,3 @@
+
+
+WPF中的INotifyProperty接口练习

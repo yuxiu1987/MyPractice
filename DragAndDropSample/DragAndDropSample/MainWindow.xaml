@@ -5,13 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DragAndDropSample"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1100">
+        Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Grid x:Name="grid" HorizontalAlignment="Left" Height="669" VerticalAlignment="Top" Width="1046" AllowDrop="True" >
-            <Rectangle x:Name="rec" Fill="#FFF4F4F5" Height="50" Width="100" Margin="349,108,296,495" Stroke="Black" MouseMove="rec_MouseMove" PreviewMouseLeftButtonDown="rec_PreviewMouseLeftButtonDown" MouseDown="rec_MouseDown" />
-            <Label x:Name="label" Content="{Binding ElementName=rec , Path=Margin.Left}" HorizontalAlignment="Left" Margin="209,534,0,0" VerticalAlignment="Top"/>
-        </Grid>
-        <StackPanel x:Name="stack" AllowDrop="True" HorizontalAlignment="Left" Height="669" Margin="1046,0,0,0" VerticalAlignment="Top" Width="46" Orientation="Vertical"/>
+        <Label x:Name="label" Content="晓监事2333" HorizontalAlignment="Left" Margin="41,38,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.532,0.508" MouseMove="label_MouseMove"/>
+        <ListBox x:Name="listbox" HorizontalAlignment="Left" Height="283" Margin="298,10,0,0" VerticalAlignment="Top" Width="100" AllowDrop="True" DragEnter="listbox_DragEnter" DragLeave="listbox_DragLeave" DragOver="listbox_DragOver" Drop="listbox_Drop"/>
 
     </Grid>
 </Window>
