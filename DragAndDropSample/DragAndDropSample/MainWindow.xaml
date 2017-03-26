@@ -17,9 +17,9 @@
         <Rectangle x:Name="rec" Fill="Blue" HorizontalAlignment="Left" Height="24" 
                    Margin="184,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="116" MouseMove="rec_MouseMove"/>
         
-        <StackPanel x:Name="stack" HorizontalAlignment="Left" Height="254" Margin="360,379,0,0"  
-                    VerticalAlignment="Top" Width="186" Background="Gainsboro" AllowDrop="True"
-                    DragEnter="stack_DragEnter" DragLeave="stack_DragLeave" DragOver="stack_DragOver" Drop="stack_Drop"/>
-
+        <Grid x:Name="gd" HorizontalAlignment="Left" Height="358" Margin="360,379,0,0"  
+                    VerticalAlignment="Top" Width="620" Background="Gainsboro" AllowDrop="True"
+                    DragEnter="stack_DragEnter" DragLeave="stack_DragLeave" DragOver="stack_DragOver" Drop="stack_Drop" MouseMove="gd_MouseMove"/>
+        
     </Grid>
 </Window>

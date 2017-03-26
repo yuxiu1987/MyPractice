@@ -75,7 +75,8 @@ namespace DragAndDropSample
         #region rectangle拖拽进stacpanel
 
         Rectangle temprec;
-
+        Point startpt;
+        object captured;
         private void rec_MouseMove(object sender, MouseEventArgs e)
         {
             var rect = sender as Rectangle;
@@ -93,16 +94,37 @@ namespace DragAndDropSample
             {
                 e.Effects = DragDropEffects.None;
             }
+            Rectangle temp = (Rectangle)e.Data.GetData("mydata");
+
+            temprec = new Rectangle { Height = temp.Height, Width = temp.Width, Fill = temp.Fill , Name = "newrec" };
+            gd.Children.Add(temprec);            
+        }
+
+        private void gd_MouseMove(object sender, MouseEventArgs e)
+        {
+            var currentgd = sender as Grid;
+            if ((currentgd != null) && e.LeftButton == MouseButtonState.Pressed)
+            {
+                startpt = e.GetPosition(currentgd);
+                var margin = temprec.Margin;
+                var currentpos = e.GetPosition(currentgd);
+                e.MouseDevice.Capture(temprec);
+                double dx = currentpos.X - startpt.X;
+                double dy = currentpos.Y - startpt.Y;
+                margin.Left += dx;
+                margin.Right -= dx; margin.Top += dy; margin.Bottom -= dy;
+            }
+            else e.MouseDevice.Capture(null);
         }
 
         private void stack_DragLeave(object sender, DragEventArgs e)
         {
-
+            gd.Children.Clear();
         }
 
         private void stack_DragOver(object sender, DragEventArgs e)
         {
-
+            
         }
 
         private void stack_Drop(object sender, DragEventArgs e)
@@ -111,12 +133,13 @@ namespace DragAndDropSample
             {
                 Rectangle recin = new Rectangle();
                 recin = e.Data.GetData("mydata") as Rectangle;
-                recin.Parent.SetValue(ContentPresenter.ContentProperty, null);
-                stack.Children.Add(recin);
-             //   stack.Children.Add(new Rectangle { Height = recin.Height , Width = recin.Width,
-             //   Fill = recin.Fill});
+
+                gd.Children.Add(new Rectangle { Height = recin.Height , Width = recin.Width,
+                Fill = recin.Fill});
             }
         }
         #endregion
+
+
     }
 }
