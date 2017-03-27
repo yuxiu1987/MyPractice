@@ -25,8 +25,7 @@ namespace DragAndDropSample
             InitializeComponent();
         }
 
-        #region label拖拽进listbox
-        string previous;
+        #region label的content属性拖拽进listbox
         private void label_MouseMove(object sender, MouseEventArgs e)
         {
             var _label = sender as Label;
@@ -35,111 +34,127 @@ namespace DragAndDropSample
                 DragDrop.DoDragDrop(label, label.Content.ToString(), DragDropEffects.Move);
             }
         }
-
         
         private void listbox_DragEnter(object sender, DragEventArgs e)
         {
             var list = sender as ListBox;
-            var str = e.Data.GetData(DataFormats.StringFormat);
-            list.Items.Add(str);
+            if(e.Data.GetDataPresent(DataFormats.StringFormat))
+            {
+                var str = e.Data.GetData(DataFormats.StringFormat);
+                list.Items.Add(str);
+            }
+
         }
 
         private void listbox_DragLeave(object sender, DragEventArgs e)
         {
             var list = sender as ListBox;
-            var str = e.Data.GetData(DataFormats.StringFormat);
-            list.Items.Remove(str);
+            if (e.Data.GetDataPresent(DataFormats.StringFormat))
+            {
+                var str = e.Data.GetData(DataFormats.StringFormat);
+                list.Items.Remove(str);
+            }
+            
         }
 
         private void listbox_DragOver(object sender, DragEventArgs e)
         {
-            var list = sender as ListBox;
-            e.Effects = DragDropEffects.Move;
+            if(!e.Data.GetDataPresent(DataFormats.StringFormat))
+            {
+                e.Effects = DragDropEffects.None;
+            }
         }
 
         private void listbox_Drop(object sender, DragEventArgs e)
         {
-            /*
-            var list = sender as ListBox;
-            var str = e.Data.GetData(DataFormats.StringFormat);
-
-            list.Items.Remove(str);
-
-
-            list.Items.Add(str);
-            */
             
+            var list = sender as ListBox;
+            if (e.Data.GetDataPresent(DataFormats.StringFormat))
+            {
+                var str = e.Data.GetData(DataFormats.StringFormat);
+                list.Items.Remove(str);
+                list.Items.Add(str);
+            }
+
         }
         #endregion
 
-        #region rectangle拖拽进stacpanel
 
-        Rectangle temprec;
-        Point startpt;
-        object captured;
+
+        #region 拖拽label时将自定义数据对象拖拽进listbox
+        private void Label_MouseMove_1(object sender, MouseEventArgs e)
+        {
+            var _label = sender as Label;
+            if((_label != null)&& e.LeftButton == MouseButtonState.Pressed)
+            {
+                string datacontent = "liu yi wei";
+                DataObject dataobj = new DataObject(datacontent.GetType(), datacontent);
+                DragDrop.DoDragDrop(_label, dataobj, DragDropEffects.Copy);
+            }
+        }
+        #endregion
+
+
+        #region rectangle拖拽进grid
+
+
         private void rec_MouseMove(object sender, MouseEventArgs e)
         {
-            var rect = sender as Rectangle;
-            DataObject dataobj = new DataObject("mydata", rect);
-            if( (rect != null)&& e.LeftButton == MouseButtonState.Pressed )
+            var _rec = sender as Rectangle;
+            if ((_rec != null) && e.LeftButton == MouseButtonState.Pressed)
             {
-                DragDrop.DoDragDrop(rect, dataobj, DragDropEffects.Copy);
+
+                ((Grid)_rec.Parent).Children.Remove(_rec);
+                Rectangle datacontent = _rec;
+
+                DataObject dataobj = new DataObject("myrec", datacontent);
+                DragDrop.DoDragDrop(rec, dataobj, DragDropEffects.Copy);
             }
         }
 
-
-        private void stack_DragEnter(object sender, DragEventArgs e)
+        private void Grid_DragEnter(object sender, DragEventArgs e)
         {
-            if(!e.Data.GetDataPresent("mydata"))
+            var gd = sender as Grid;
+            if (e.Data.GetDataPresent("myrec"))
+            {
+                var temp = e.Data.GetData("myrec");
+                gd.Children.Add(temp as Rectangle);
+            }
+        }
+
+        private void Grid_DragLeave(object sender, DragEventArgs e)
+        {
+            var gd = sender as Grid;
+            if (e.Data.GetDataPresent("myrec"))
+            {
+                var temp = e.Data.GetData("myrec");
+                gd.Children.Remove(temp as Rectangle);
+            }
+        }
+
+        private void Grid_DragOver(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent("myrec"))
             {
                 e.Effects = DragDropEffects.None;
             }
-            Rectangle temp = (Rectangle)e.Data.GetData("mydata");
-
-            temprec = new Rectangle { Height = temp.Height, Width = temp.Width, Fill = temp.Fill , Name = "newrec" };
-            gd.Children.Add(temprec);            
         }
 
-        private void gd_MouseMove(object sender, MouseEventArgs e)
+        private void Grid_Drop(object sender, DragEventArgs e)
         {
-            var currentgd = sender as Grid;
-            if ((currentgd != null) && e.LeftButton == MouseButtonState.Pressed)
+            var gd = sender as Grid;
+            if (e.Data.GetDataPresent("myrec"))
             {
-                startpt = e.GetPosition(currentgd);
-                var margin = temprec.Margin;
-                var currentpos = e.GetPosition(currentgd);
-                e.MouseDevice.Capture(temprec);
-                double dx = currentpos.X - startpt.X;
-                double dy = currentpos.Y - startpt.Y;
-                margin.Left += dx;
-                margin.Right -= dx; margin.Top += dy; margin.Bottom -= dy;
+                var temp = e.Data.GetData("myrec");
+                gd.Children.Add(temp as Rectangle);
             }
-            else e.MouseDevice.Capture(null);
-        }
-
-        private void stack_DragLeave(object sender, DragEventArgs e)
-        {
-            gd.Children.Clear();
-        }
-
-        private void stack_DragOver(object sender, DragEventArgs e)
-        {
-            
-        }
-
-        private void stack_Drop(object sender, DragEventArgs e)
-        {
-            if(e.Data.GetDataPresent("mydata"))
-            {
-                Rectangle recin = new Rectangle();
-                recin = e.Data.GetData("mydata") as Rectangle;
-
-                gd.Children.Add(new Rectangle { Height = recin.Height , Width = recin.Width,
-                Fill = recin.Fill});
-            }
-        }
+        }        
         #endregion
 
 
     }
+    
+
+
+
 }

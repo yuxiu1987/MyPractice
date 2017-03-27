@@ -9,17 +9,15 @@
     <Grid>
         <Label x:Name="label" Content="晓监事2333" HorizontalAlignment="Left" Margin="41,38,0,0" 
                VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.532,0.508" MouseMove="label_MouseMove"/>
-        
+
         <ListBox x:Name="listbox" HorizontalAlignment="Left" Height="177" Margin="298,10,0,0" 
                  VerticalAlignment="Top" Width="100" AllowDrop="True" DragEnter="listbox_DragEnter"
                  DragLeave="listbox_DragLeave" DragOver="listbox_DragOver" Drop="listbox_Drop"/>
-        
+
         <Rectangle x:Name="rec" Fill="Blue" HorizontalAlignment="Left" Height="24" 
-                   Margin="184,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="116" MouseMove="rec_MouseMove"/>
-        
-        <Grid x:Name="gd" HorizontalAlignment="Left" Height="358" Margin="360,379,0,0"  
-                    VerticalAlignment="Top" Width="620" Background="Gainsboro" AllowDrop="True"
-                    DragEnter="stack_DragEnter" DragLeave="stack_DragLeave" DragOver="stack_DragOver" Drop="stack_Drop" MouseMove="gd_MouseMove"/>
-        
+                   Margin="436,499,0,0" Stroke="Black" VerticalAlignment="Top" Width="116" MouseMove="rec_MouseMove" />
+        <Grid HorizontalAlignment="Left" Height="348" Margin="622,379,0,0" VerticalAlignment="Top" Width="596" Background="#FFC3B9B9" AllowDrop="True" DragEnter="Grid_DragEnter" DragLeave="Grid_DragLeave" DragOver="Grid_DragOver" Drop="Grid_Drop"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="76,151,0,0" VerticalAlignment="Top" MouseMove="Label_MouseMove_1"/>
+
     </Grid>
 </Window>
