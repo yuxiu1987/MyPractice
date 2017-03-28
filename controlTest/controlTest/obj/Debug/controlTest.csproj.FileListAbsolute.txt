@@ -11,3 +11,17 @@ F:\myopensource\controlTest\controlTest\obj\Debug\controlTest.Properties.Resourc
 F:\myopensource\controlTest\controlTest\obj\Debug\controlTest.csproj.GenerateResource.Cache
 F:\myopensource\controlTest\controlTest\obj\Debug\controlTest.exe
 F:\myopensource\controlTest\controlTest\obj\Debug\controlTest.pdb
+E:\myopensource\MyPractice\controlTest\controlTest\bin\Debug\controlTest.exe.config
+E:\myopensource\MyPractice\controlTest\controlTest\bin\Debug\controlTest.exe
+E:\myopensource\MyPractice\controlTest\controlTest\bin\Debug\controlTest.pdb
+E:\myopensource\MyPractice\controlTest\controlTest\obj\Debug\controlTest.csprojResolveAssemblyReference.cache
+E:\myopensource\MyPractice\controlTest\controlTest\obj\Debug\MainWindow.g.cs
+E:\myopensource\MyPractice\controlTest\controlTest\obj\Debug\App.g.cs
+E:\myopensource\MyPractice\controlTest\controlTest\obj\Debug\controlTest_MarkupCompile.cache
+E:\myopensource\MyPractice\controlTest\controlTest\obj\Debug\controlTest_MarkupCompile.lref
+E:\myopensource\MyPractice\controlTest\controlTest\obj\Debug\MainWindow.baml
+E:\myopensource\MyPractice\controlTest\controlTest\obj\Debug\controlTest.g.resources
+E:\myopensource\MyPractice\controlTest\controlTest\obj\Debug\controlTest.Properties.Resources.resources
+E:\myopensource\MyPractice\controlTest\controlTest\obj\Debug\controlTest.csproj.GenerateResource.Cache
+E:\myopensource\MyPractice\controlTest\controlTest\obj\Debug\controlTest.exe
+E:\myopensource\MyPractice\controlTest\controlTest\obj\Debug\controlTest.pdb

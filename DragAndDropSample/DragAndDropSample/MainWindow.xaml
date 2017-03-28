@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DragAndDropSample"
         mc:Ignorable="d"
-        Title="MainWindow" Height="768" Width="1366">
+        Title="MainWindow" Height="768" Width="1366" Loaded="Window_Loaded">
     <Grid>
         <Label x:Name="label" Content="晓监事2333" HorizontalAlignment="Left" Margin="41,38,0,0" 
                VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.532,0.508" MouseMove="label_MouseMove"/>
@@ -16,8 +16,22 @@
 
         <Rectangle x:Name="rec" Fill="Blue" HorizontalAlignment="Left" Height="24" 
                    Margin="436,499,0,0" Stroke="Black" VerticalAlignment="Top" Width="116" MouseMove="rec_MouseMove" />
-        <Grid HorizontalAlignment="Left" Height="348" Margin="622,379,0,0" VerticalAlignment="Top" Width="596" Background="#FFC3B9B9" AllowDrop="True" DragEnter="Grid_DragEnter" DragLeave="Grid_DragLeave" DragOver="Grid_DragOver" Drop="Grid_Drop"/>
+        <Grid HorizontalAlignment="Left" Height="348" Margin="622,379,0,0" VerticalAlignment="Top" Width="596" Background="#FFC3B9B9"
+              AllowDrop="True" DragEnter="Grid_DragEnter" DragLeave="Grid_DragLeave" DragOver="Grid_DragOver" Drop="Grid_Drop"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="76,151,0,0" VerticalAlignment="Top" MouseMove="Label_MouseMove_1"/>
+        <StackPanel HorizontalAlignment="Left" Height="177" Margin="1080,10,0,0" VerticalAlignment="Top" Width="138" Background="#FFB6B6B6"
+                    AllowDrop="True" DragEnter="StackPanel_DragEnter" DragLeave="StackPanel_DragLeave"
+                    DragOver="StackPanel_DragOver" Drop="StackPanel_Drop" >
+            <Label Content="{Binding name}"/>
+            <Label Content="{Binding age}"/>
+            <Label Content="{Binding sex}"/>
+
+        </StackPanel>
+        <Label x:Name="liuweilabel" Content="{Binding name}" HorizontalAlignment="Left" Margin="948,53,0,0" VerticalAlignment="Top" Width="60" MouseMove="Label_MouseMove_2"/>
+        <Label x:Name="label1" Content="拖拽Label的内容进入拖放目标" HorizontalAlignment="Left" Margin="41,13,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy" Content="拖拽自定义数据类型进入拖放目标" HorizontalAlignment="Left" Margin="41,126,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy1" Content="拖拽源的绑定源至拖放目标，并设置为拖放目标的绑定源" HorizontalAlignment="Left" Margin="698,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy2" Content="拖拽控件或图形进入拖放目标" HorizontalAlignment="Left" Margin="398,326,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
