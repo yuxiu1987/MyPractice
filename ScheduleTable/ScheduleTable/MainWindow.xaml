@@ -1,0 +1,68 @@
+﻿<Window x:Class="ScheduleTable.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScheduleTable"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1200" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <Style x:Key="label1" TargetType="Label">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="canvas1" TargetType="Canvas">
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Width" Value="1008"/>
+            <Setter Property="Background" Value="LightGray"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid x:Name="ScheduleTablePanel" Height="720" Width="1100" Background="AliceBlue" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Mon" Style="{DynamicResource label1}" Grid.Column="0" Grid.Row="1"/>
+            <Label Content="Tue" Style="{DynamicResource label1}" Grid.Column="0" Grid.Row="2"/>
+            <Label Content="Wed" Style="{DynamicResource label1}" Grid.Column="0" Grid.Row="3"/>
+            <Label Content="Thu" Style="{DynamicResource label1}" Grid.Column="0" Grid.Row="4"/>
+            <Label Content="Fri" Style="{DynamicResource label1}" Grid.Column="0" Grid.Row="5"/>
+            <Label Content="Sat" Style="{DynamicResource label1}" Grid.Column="0" Grid.Row="6"/>
+            <Label Content="Sun" Style="{DynamicResource label1}" Grid.Column="0" Grid.Row="7"/>
+            <Canvas x:Name="MondaySlot" Style="{DynamicResource canvas1}" Grid.Column="1" Grid.Row="1"/>
+            <Canvas x:Name="TuesdaySlot" Style="{DynamicResource canvas1}" Grid.Column="1" Grid.Row="2"/>
+            <Canvas x:Name="WednesdaySlot" Style="{DynamicResource canvas1}" Grid.Column="1" Grid.Row="3"/>
+            <Canvas x:Name="ThursdaySlot" Style="{DynamicResource canvas1}" Grid.Column="1" Grid.Row="4"/>
+            <Canvas x:Name="FridaySlot" Style="{DynamicResource canvas1}" Grid.Column="1" Grid.Row="5"/>
+            <Canvas x:Name="SaturdaySlot" Style="{DynamicResource canvas1}" Grid.Column="1" Grid.Row="6"/>
+            <Canvas x:Name="SundaySlot" Style="{DynamicResource canvas1}" Grid.Column="1" Grid.Row="7"/>
+
+        </Grid>
+        <Expander Header="FlightsTemplate" HorizontalAlignment="Left" Height="500" VerticalAlignment="Top" Width="200">
+            <Grid Background="#FFE5E5E5">
+                <ListBox HorizontalAlignment="Left" Height="457" VerticalAlignment="Top" Width="188" Margin="0,10,0,0"/>
+            </Grid>
+        </Expander>
+        <Expander Header="Flights" HorizontalAlignment="Left" Height="326" VerticalAlignment="Top" Width="136" Margin="1046,0,0,0">
+            <Grid Background="#FFE5E5E5">
+                <ListBox HorizontalAlignment="Left" Height="293" VerticalAlignment="Top" Width="134"/>
+            </Grid>
+        </Expander>
+
+    </Grid>
+</Window>
