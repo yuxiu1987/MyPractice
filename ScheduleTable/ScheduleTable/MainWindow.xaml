@@ -19,6 +19,11 @@
             <Setter Property="Width" Value="1008"/>
             <Setter Property="Background" Value="LightGray"/>
         </Style>
+        <Style x:Key="listbox1" TargetType="ListBox">
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Width" Value="1008"/>
+            <Setter Property="Background" Value="LightGray"/>
+        </Style>
     </Window.Resources>
     
     <Grid>
@@ -44,7 +49,34 @@
             <Label Content="Fri" Style="{DynamicResource label1}" Grid.Column="0" Grid.Row="5"/>
             <Label Content="Sat" Style="{DynamicResource label1}" Grid.Column="0" Grid.Row="6"/>
             <Label Content="Sun" Style="{DynamicResource label1}" Grid.Column="0" Grid.Row="7"/>
-            <Canvas x:Name="MondaySlot" Style="{DynamicResource canvas1}" Grid.Column="1" Grid.Row="1"/>
+
+            <ListBox x:Name="MondaySlot"  Style="{DynamicResource listbox1}" Grid.Column="1" Grid.Row="1">
+                <ListBox.Template>
+                    <ControlTemplate TargetType="{x:Type ListBox}">
+                        <Canvas Background="LightGray" x:Name="CanvasPanel" IsItemsHost="True" />
+                    </ControlTemplate>
+                </ListBox.Template>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Canvas.Left" Value="{Binding (Canvas.Left)}"/>
+                        <Setter Property="Canvas.Top" Value="{Binding (Canvas.Top)}"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Height="50" Width="160" VerticalAlignment="Top" Canvas.Left="100" Background="#A9A9A9">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Label Margin="10,0,0,0" Grid.Row="0" Width="140" Content="{Binding FlightNumber}"/>
+                            <Label Margin="10,0,0,0" Grid.Row="1" Width="140" Content="{Binding StartDay}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+
             <Canvas x:Name="TuesdaySlot" Style="{DynamicResource canvas1}" Grid.Column="1" Grid.Row="2"/>
             <Canvas x:Name="WednesdaySlot" Style="{DynamicResource canvas1}" Grid.Column="1" Grid.Row="3"/>
             <Canvas x:Name="ThursdaySlot" Style="{DynamicResource canvas1}" Grid.Column="1" Grid.Row="4"/>
