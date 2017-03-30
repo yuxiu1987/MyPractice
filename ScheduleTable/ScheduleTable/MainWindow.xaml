@@ -19,10 +19,44 @@
             <Setter Property="Width" Value="1008"/>
             <Setter Property="Background" Value="LightGray"/>
         </Style>
-        <Style x:Key="listbox1" TargetType="ListBox">
+        <Style x:Key="slotstyle" TargetType="ListBox">
             <Setter Property="Height" Value="60"/>
             <Setter Property="Width" Value="1008"/>
             <Setter Property="Background" Value="LightGray"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBox}">
+                        <Canvas Background="{TemplateBinding Background}" x:Name="CanvasPanel" IsItemsHost="True" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemContainerStyle">
+                <Setter.Value>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Canvas.Left" Value="{Binding XPath=drawPosition}"/>
+                        <Setter Property="Canvas.Top" Value="5"/>
+                        <Setter Property="Width" Value="{Binding XPath=darwWidth}"/>
+                        <Setter Property="Template" >
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Grid Height="50" VerticalAlignment="Top"  Background="SeaGreen">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Label Margin="0,10,0,0" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center"  Content="{Binding XPath=FlightNumber}"/>
+                                        <Label Margin="2,0,0,0" Grid.Row="0" HorizontalAlignment="Left" Content="{Binding XPath=Depart}"/>
+                                        <Label Margin="0,0,2,0" Grid.Row="0" HorizontalAlignment="Right" Content="{Binding XPath=Arrival}"/>
+                                        <TextBlock Margin="2,0,0,0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Text="{Binding XPath=starttime, StringFormat={}{0:t}, ConverterCulture=es-ES}"/>
+                                        <TextBlock Margin="0,0,2,0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text="{Binding XPath=endtime ,StringFormat={}{0:t}, ConverterCulture=es-ES}" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
     
@@ -50,39 +84,13 @@
             <Label Content="Sat" Style="{DynamicResource label1}" Grid.Column="0" Grid.Row="6"/>
             <Label Content="Sun" Style="{DynamicResource label1}" Grid.Column="0" Grid.Row="7"/>
 
-            <ListBox x:Name="MondaySlot"  Style="{DynamicResource listbox1}" Grid.Column="1" Grid.Row="1">
-                <ListBox.Template>
-                    <ControlTemplate TargetType="{x:Type ListBox}">
-                        <Canvas Background="LightGray" x:Name="CanvasPanel" IsItemsHost="True" />
-                    </ControlTemplate>
-                </ListBox.Template>
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
-                        <Setter Property="Canvas.Left" Value="{Binding (Canvas.Left)}"/>
-                        <Setter Property="Canvas.Top" Value="{Binding (Canvas.Top)}"/>
-                    </Style>
-                </ListBox.ItemContainerStyle>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Height="50" Width="160" VerticalAlignment="Top" Canvas.Left="100" Background="#A9A9A9">
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Label Margin="10,0,0,0" Grid.Row="0" Width="140" Content="{Binding FlightNumber}"/>
-                            <Label Margin="10,0,0,0" Grid.Row="1" Width="140" Content="{Binding StartDay}"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-
-
-            <Canvas x:Name="TuesdaySlot" Style="{DynamicResource canvas1}" Grid.Column="1" Grid.Row="2"/>
-            <Canvas x:Name="WednesdaySlot" Style="{DynamicResource canvas1}" Grid.Column="1" Grid.Row="3"/>
-            <Canvas x:Name="ThursdaySlot" Style="{DynamicResource canvas1}" Grid.Column="1" Grid.Row="4"/>
-            <Canvas x:Name="FridaySlot" Style="{DynamicResource canvas1}" Grid.Column="1" Grid.Row="5"/>
-            <Canvas x:Name="SaturdaySlot" Style="{DynamicResource canvas1}" Grid.Column="1" Grid.Row="6"/>
-            <Canvas x:Name="SundaySlot" Style="{DynamicResource canvas1}" Grid.Column="1" Grid.Row="7"/>
+            <ListBox x:Name="MondaySlot"  Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="1"/>
+            <ListBox x:Name="TuesdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="2"/>
+            <ListBox x:Name="WednesdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="3"/>
+            <ListBox x:Name="ThursdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="4"/>
+            <ListBox x:Name="FridaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="5"/>
+            <ListBox x:Name="SaturdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="6"/>
+            <ListBox x:Name="SundaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="7"/>
 
         </Grid>
         <Expander Header="FlightsTemplate" HorizontalAlignment="Left" Height="500" VerticalAlignment="Top" Width="200">

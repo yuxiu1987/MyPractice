@@ -9,9 +9,14 @@ namespace ScheduleTable
     public class Flight
     {
         public string FlightNumber { get; set; }
+        public string Depart { get; set; }
+        public string Arrival { get; set; }
+
+
         public DateTime starttime { get; set; }
         public TimeSpan timelength { get; set; }
-        public int drawlength { get { return (timelength.Hours * 100); } }
+        public int drawPosition { get { return (starttime.Hour * 20); } }
+        public int darwWidth { get { return (timelength.Hours*100); } }
 
         public DateTime endtime { get { return (starttime.Add(timelength)); } }
         

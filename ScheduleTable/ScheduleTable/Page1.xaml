@@ -17,8 +17,8 @@
                 </ListBox.Template >
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
-                        <Setter Property="Canvas.Left" Value="{Binding (Canvas.Left)}"/>
-                        <Setter Property="Canvas.Top" Value="{Binding (Canvas.Top)}"/>
+                        <Setter Property="Canvas.Left" Value="{Binding Canvas.Left}"/>
+                        <Setter Property="Canvas.Top" Value="{Binding Canvas.Top}"/>
                     </Style>
                 </ListBox.ItemContainerStyle>
                 <ListBox.Items>
