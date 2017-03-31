@@ -29,23 +29,13 @@ namespace ScheduleTable
         {
             SetFlights();
 
-            ScheduleTablePanel.DataContext = SchedulePerWeek.Instance;
-
-          //  MondaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInMonday;
-
+            MondaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInMonday;
             TuesdaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInTuesday;
             WednesdaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInWednesday;
             ThursdaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInThursday;
             FridaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInFriday;
             SaturdaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInSaturday;
             SundaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInSunday;
-
-            Binding bdmon = new Binding();
-            bdmon.Source = SchedulePerWeek.Instance.FlightsInMonday;
-            bdmon.Mode = BindingMode.TwoWay;
-            MondaySlot.SetBinding(DataContextProperty, bdmon);
-
-
         }
 
         private void SetFlights()
@@ -53,17 +43,17 @@ namespace ScheduleTable
             Flight f1 = new Flight
             {
                 starttime = new DateTime(1900, 1, 1, 6, 30, 0),
-                timelength = new TimeSpan(2, 0, 0),
+                timelength = new TimeSpan(1, 0, 0),
                 StartDay = DayOfWeek.Monday,
                 FlightNumber = "SLD1001",
                 Depart = "HEL",
-                Arrival = "CPH",
+                Arrival = "ARN",
                 
             };
             Flight f2 = new Flight
             {
-                starttime = new DateTime(1900, 1, 1, 20, 30, 0),
-                timelength = new TimeSpan(2, 0, 0),
+                starttime = new DateTime(1900, 1, 1, 21, 30, 0),
+                timelength = new TimeSpan(2, 28, 0),
                 StartDay = DayOfWeek.Monday,
                 FlightNumber = "SLD1003",
                 Depart = "HEL",
@@ -87,10 +77,22 @@ namespace ScheduleTable
                 Depart = "HEL",
                 Arrival = "AUH",
             };
+
+            Flight f5 = new Flight
+            {
+                starttime = new DateTime(1900, 1, 1, 18, 30, 0),
+                timelength = new TimeSpan(9, 16, 0),
+                StartDay = DayOfWeek.Tuesday,
+                FlightNumber = "SLD505",
+                Depart = "HEL",
+                Arrival = "PVG",
+            };
+
             SchedulePerWeek.Instance.FlightsPerWeek.Add(f1);
             SchedulePerWeek.Instance.FlightsPerWeek.Add(f2);
             SchedulePerWeek.Instance.FlightsPerWeek.Add(f3);
             SchedulePerWeek.Instance.FlightsPerWeek.Add(f4);
+            SchedulePerWeek.Instance.FlightsPerWeek.Add(f5);
         }
 
 
