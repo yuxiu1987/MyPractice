@@ -30,14 +30,6 @@ namespace ScheduleTable
             SetFlights();
 
             ModelListBox.ItemsSource = FlightModelList.Instance.ModelList;
-
-            MondaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInMonday;
-            TuesdaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInTuesday;
-            WednesdaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInWednesday;
-            ThursdaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInThursday;
-            FridaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInFriday;
-            SaturdaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInSaturday;
-            SundaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInSunday;
         }
 
         private void SetFlights()
@@ -134,8 +126,16 @@ namespace ScheduleTable
 
                 SchedulePerWeek.Instance.FlightsPerWeek.Add(sourcedata);
 
-
+                MondaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInMonday;
+                TuesdaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInTuesday;
+                WednesdaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInWednesday;
+                ThursdaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInThursday;
+                FridaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInFriday;
+                SaturdaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInSaturday;
+                SundaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInSunday;
             }
+
+
         }
     }
 }

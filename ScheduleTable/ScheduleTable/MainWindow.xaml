@@ -54,7 +54,7 @@
                         </Setter>
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                
+
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -79,7 +79,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ListBox x:Name="MondaySlot"  Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="1" Drop="MondaySlot_Drop"/>
+            <ListBox x:Name="MondaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="1" Drop="MondaySlot_Drop"/>
             <ListBox x:Name="TuesdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="2"/>
             <ListBox x:Name="WednesdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="3"/>
             <ListBox x:Name="ThursdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="4"/>
