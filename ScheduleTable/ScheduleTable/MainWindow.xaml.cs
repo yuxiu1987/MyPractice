@@ -29,6 +29,8 @@ namespace ScheduleTable
         {
             SetFlights();
 
+            ModelListBox.ItemsSource = FlightModelList.Instance.ModelList;
+
             MondaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInMonday;
             TuesdaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInTuesday;
             WednesdaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInWednesday;
@@ -42,7 +44,7 @@ namespace ScheduleTable
         {
             Flight f1 = new Flight
             {
-                starttime = new DateTime(1900, 1, 1, 6, 30, 0),
+                starttime = new DateTime(1900, 1, 1, 0, 0, 0),
                 timelength = new TimeSpan(1, 0, 0),
                 StartDay = DayOfWeek.Monday,
                 FlightNumber = "SLD1001",
@@ -52,7 +54,7 @@ namespace ScheduleTable
             };
             Flight f2 = new Flight
             {
-                starttime = new DateTime(1900, 1, 1, 21, 30, 0),
+                starttime = new DateTime(1900, 1, 1, 22, 30, 0),
                 timelength = new TimeSpan(2, 28, 0),
                 StartDay = DayOfWeek.Monday,
                 FlightNumber = "SLD1003",
@@ -61,7 +63,7 @@ namespace ScheduleTable
             };
             Flight f3 = new Flight
             {
-                starttime = new DateTime(1900, 1, 1, 14, 30, 0),
+                starttime = new DateTime(1900, 1, 1, 15, 30, 0),
                 timelength = new TimeSpan(8, 16, 0),
                 StartDay = DayOfWeek.Wednesday,
                 FlightNumber = "SLD501",
@@ -88,13 +90,52 @@ namespace ScheduleTable
                 Arrival = "PVG",
             };
 
-            SchedulePerWeek.Instance.FlightsPerWeek.Add(f1);
-            SchedulePerWeek.Instance.FlightsPerWeek.Add(f2);
-            SchedulePerWeek.Instance.FlightsPerWeek.Add(f3);
-            SchedulePerWeek.Instance.FlightsPerWeek.Add(f4);
-            SchedulePerWeek.Instance.FlightsPerWeek.Add(f5);
+            Flight f6 = new Flight
+            {
+                starttime = new DateTime(1900, 1, 1, 11, 55, 0),
+                timelength = new TimeSpan(12, 0, 0),
+                StartDay = DayOfWeek.Thursday,
+                FlightNumber = "SLD507",
+                Depart = "HEL",
+                Arrival = "SFO",
+            };
+
+            FlightModelList.Instance.ModelList.Add(f1);
+            FlightModelList.Instance.ModelList.Add(f2);
+            FlightModelList.Instance.ModelList.Add(f3);
+            FlightModelList.Instance.ModelList.Add(f4);
+            FlightModelList.Instance.ModelList.Add(f5);
+            FlightModelList.Instance.ModelList.Add(f6);
         }
 
+        private void ModelListBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            var datasource = sender as ListBox;
 
+
+
+            if( (datasource!=null) && (e.MouseDevice.LeftButton == MouseButtonState.Pressed) )
+            {
+                //自定义数据类型
+                var datacontent = datasource.SelectedItem;
+                string dataname = "flightmodel";
+                DataObject dataobj = new DataObject(dataname, datacontent);
+
+                //启动拖拽
+                DragDrop.DoDragDrop(datasource, dataobj, DragDropEffects.Copy);
+            }
+        }
+
+        private void MondaySlot_Drop(object sender, DragEventArgs e)
+        {
+            if(e.Data.GetDataPresent("flightmodel"))
+            {
+                var sourcedata = e.Data.GetData("flightmodel") as Flight;
+
+                SchedulePerWeek.Instance.FlightsPerWeek.Add(sourcedata);
+
+
+            }
+        }
     }
 }

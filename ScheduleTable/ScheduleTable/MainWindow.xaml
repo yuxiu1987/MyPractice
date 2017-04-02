@@ -16,14 +16,15 @@
         </Style>
         <Style x:Key="slotstyle" TargetType="ListBox">
             <Setter Property="Height" Value="60"/>
-            <!--每0.7分钟代表1像素-->
+            <!--每1像素代表0.7分钟-->
             <Setter Property="Width" Value="1008"/>
-            <Setter Property="Background" Value="Blue"/>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="AllowDrop" Value="True"/>
 
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBox}">
-                        <Canvas Background="LightGray" Width="1008" x:Name="CanvasPanel" HorizontalAlignment="Center" IsItemsHost="True" />
+                        <Canvas Background="{TemplateBinding Background}" Width="{TemplateBinding Width}" x:Name="CanvasPanel" HorizontalAlignment="Center" IsItemsHost="True" />
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -47,9 +48,15 @@
                                         <TextBlock Margin="2,0,0,0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Text="{Binding starttime, StringFormat={}{0:t}, ConverterCulture=es-ES}"/>
                                         <TextBlock Margin="0,0,2,0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text="{Binding endtime ,StringFormat={}{0:t}, ConverterCulture=es-ES}" />
                                     </Grid>
+                                    
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                
+                            </Trigger>
+                        </Style.Triggers>
                     </Style>
                 </Setter.Value>
             </Setter>
@@ -72,7 +79,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ListBox x:Name="MondaySlot"  Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="1"/>
+            <ListBox x:Name="MondaySlot"  Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="1" Drop="MondaySlot_Drop"/>
             <ListBox x:Name="TuesdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="2"/>
             <ListBox x:Name="WednesdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="3"/>
             <ListBox x:Name="ThursdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="4"/>
@@ -89,12 +96,26 @@
             <Label Content="Sun" Style="{DynamicResource label1}" Grid.Column="0" Grid.Row="7"/>
         </Grid>
 
-        <Expander Header="FlightsTemplate" HorizontalAlignment="Left" Height="500" VerticalAlignment="Top" Width="200">
+        <Expander  Header="FlightsTemplate" HorizontalAlignment="Left" Height="500" VerticalAlignment="Top" Width="200">
             <Grid Background="#FFE5E5E5">
-                <ListBox HorizontalAlignment="Left" Height="457" VerticalAlignment="Top" Width="188" Margin="0,10,0,0"/>
+                <ListBox x:Name="ModelListBox" ItemsSource="{Binding}"  HorizontalAlignment="Left" Height="457" VerticalAlignment="Top" Width="188" Margin="0,10,0,0" MouseMove="ModelListBox_MouseMove">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="50" Width="150" Background="LightBlue">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="number" Content="{Binding FlightNumber}" Grid.Row="0" HorizontalAlignment="Center"/>
+                                <Label x:Name="depart" Content="{Binding Depart}" Grid.Row="1" HorizontalAlignment="Left"/>
+                                <Label x:Name="arrival" Content="{Binding Arrival}" Grid.Row="1" HorizontalAlignment="Right"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>       
+                </ListBox>
             </Grid>
         </Expander>
-        <Expander Header="Flights" HorizontalAlignment="Left" Height="326" VerticalAlignment="Top" Width="136" Margin="1046,0,0,0">
+        <Expander Header="Flights" HorizontalAlignment="Left" Height="326" VerticalAlignment="Top" Width="136" Margin="988,0,0,0">
             <Grid Background="#FFE5E5E5">
                 <ListBox HorizontalAlignment="Left" Height="293" VerticalAlignment="Top" Width="134"/>
             </Grid>

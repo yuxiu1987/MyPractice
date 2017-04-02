@@ -18,9 +18,9 @@ namespace ScheduleTable
 
         #region readonly
         //转换成在槽中的坐标
-        public double drawPosition { get { return (((double)starttime.Hour * 60) * 0.7 ); } }
+        public double drawPosition { get { return (  ( (double)starttime.Hour) * 60  * 0.7 + ((double)starttime.Minute) * 0.7 ); } }
         //转换成在槽中的长度
-        public double darwWidth { get { return ((double)(timelength.Hours * 60) * 0.7); } }
+        public double darwWidth { get { return ( (double)(timelength.Hours * 60) * 0.7 + ((double)timelength.Minutes)*0.7 ); } }
 
         public DateTime endtime { get { return (starttime.Add(timelength)); } }
 
@@ -44,13 +44,23 @@ namespace ScheduleTable
                 }
                 else { endday = StartDay; return endday; }
             }
-        }
+        }       
 
         #endregion
 
-
-
-
+        /// <summary>
+        /// 设置器，将某个Flight类的值赋值给此类的新实例
+        /// </summary>
+        /// <param name="f"></param>
+        public void SetFlight(Flight f)
+        {
+            FlightNumber = f.FlightNumber;
+            Depart = f.Depart;
+            Arrival = f.Arrival;
+            StartDay = f.StartDay;
+            starttime = f.starttime;
+            timelength = f.timelength;
+        }
     }    
 }
 
