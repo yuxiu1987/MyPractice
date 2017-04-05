@@ -30,6 +30,8 @@ namespace ScheduleTable
             SetFlights();
 
             ModelListBox.ItemsSource = FlightModelList.Instance.ModelList;
+
+            flightperweeklist.ItemsSource = SchedulePerWeek.Instance.FlightsPerWeek;
         }
 
         private void SetFlights()
@@ -67,7 +69,7 @@ namespace ScheduleTable
                 starttime = new DateTime(1900, 1, 1, 20, 30, 0),
                 timelength = new TimeSpan(7, 16, 0),
                 StartDay = DayOfWeek.Friday,
-                FlightNumber = "SLD501",
+                FlightNumber = "SLD503",
                 Depart = "HEL",
                 Arrival = "AUH",
             };
@@ -100,6 +102,7 @@ namespace ScheduleTable
             FlightModelList.Instance.ModelList.Add(f6);
         }
 
+        #region Drag航班模板进入时刻表
         private void ModelListBox_MouseMove(object sender, MouseEventArgs e)
         {
             var datasource = sender as ListBox;
@@ -118,14 +121,19 @@ namespace ScheduleTable
             }
         }
 
-        private void MondaySlot_Drop(object sender, DragEventArgs e)
+        private void DropProcess(object sender, DragEventArgs e)
         {
-            if(e.Data.GetDataPresent("flightmodel"))
+            if (e.Data.GetDataPresent("flightmodel"))
             {
                 var sourcedata = e.Data.GetData("flightmodel") as Flight;
+                bool hasflight = false;
+                foreach (Flight item in SchedulePerWeek.Instance.FlightsPerWeek)
+                {
+                    if (item.Equals(sourcedata)) { hasflight = true; break; }
+                }
+                if (hasflight == false) SchedulePerWeek.Instance.FlightsPerWeek.Add(sourcedata);
 
-                SchedulePerWeek.Instance.FlightsPerWeek.Add(sourcedata);
-
+                //放入后设置绑定，否则界面不更新
                 MondaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInMonday;
                 TuesdaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInTuesday;
                 WednesdaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInWednesday;
@@ -134,8 +142,43 @@ namespace ScheduleTable
                 SaturdaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInSaturday;
                 SundaySlot.ItemsSource = SchedulePerWeek.Instance.FlightsInSunday;
             }
-
-
         }
+
+        private void MondaySlot_Drop(object sender, DragEventArgs e)
+        {
+            DropProcess(sender, e);
+        }
+
+        private void TuesdaySlot_Drop(object sender, DragEventArgs e)
+        {
+            DropProcess(sender, e);
+        }
+
+        private void WednesdaySlot_Drop(object sender, DragEventArgs e)
+        {
+            DropProcess(sender, e);
+        }
+
+        private void ThursdaySlot_Drop(object sender, DragEventArgs e)
+        {
+            DropProcess(sender, e);
+        }
+
+        private void FridaySlot_Drop(object sender, DragEventArgs e)
+        {
+            DropProcess(sender, e);
+        }
+
+        private void SaturdaySlot_Drop(object sender, DragEventArgs e)
+        {
+            DropProcess(sender, e);
+        }
+
+        private void SundaySlot_Drop(object sender, DragEventArgs e)
+        {
+            DropProcess(sender, e);
+        }
+        #endregion
+
     }
 }

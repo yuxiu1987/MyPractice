@@ -28,6 +28,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+
             <Setter Property="ItemContainerStyle">
                 <Setter.Value>
                     <Style TargetType="ListBoxItem">
@@ -47,19 +48,16 @@
                                         <Label Margin="0,0,2,0" Grid.Row="0" HorizontalAlignment="Right" Content="{Binding Arrival}"/>
                                         <TextBlock Margin="2,0,0,0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Text="{Binding starttime, StringFormat={}{0:t}, ConverterCulture=es-ES}"/>
                                         <TextBlock Margin="0,0,2,0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text="{Binding endtime ,StringFormat={}{0:t}, ConverterCulture=es-ES}" />
-                                    </Grid>
-                                    
+                                    </Grid>                                                                        
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsSelected" Value="True">
 
-                            </Trigger>
-                        </Style.Triggers>
                     </Style>
                 </Setter.Value>
             </Setter>
+
+
         </Style>
     </Window.Resources>
 
@@ -80,12 +78,12 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <ListBox x:Name="MondaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="1" Drop="MondaySlot_Drop"/>
-            <ListBox x:Name="TuesdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="2"/>
-            <ListBox x:Name="WednesdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="3"/>
-            <ListBox x:Name="ThursdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="4"/>
-            <ListBox x:Name="FridaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="5"/>
-            <ListBox x:Name="SaturdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="6"/>
-            <ListBox x:Name="SundaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="7"/>
+            <ListBox x:Name="TuesdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="2" Drop="TuesdaySlot_Drop" />
+            <ListBox x:Name="WednesdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="3" Drop="WednesdaySlot_Drop"/>
+            <ListBox x:Name="ThursdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="4" Drop="ThursdaySlot_Drop"/>
+            <ListBox x:Name="FridaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="5" Drop="FridaySlot_Drop"/>
+            <ListBox x:Name="SaturdaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="6" Drop="SaturdaySlot_Drop"/>
+            <ListBox x:Name="SundaySlot" Style="{DynamicResource slotstyle}" Grid.Column="1" Grid.Row="7" Drop="SundaySlot_Drop"/>
             
             <Label Content="Mon" Style="{DynamicResource label1}" Grid.Column="0" Grid.Row="1"/>
             <Label Content="Tue" Style="{DynamicResource label1}" Grid.Column="0" Grid.Row="2"/>
@@ -117,7 +115,7 @@
         </Expander>
         <Expander Header="Flights" HorizontalAlignment="Left" Height="326" VerticalAlignment="Top" Width="136" Margin="988,0,0,0">
             <Grid Background="#FFE5E5E5">
-                <ListBox HorizontalAlignment="Left" Height="293" VerticalAlignment="Top" Width="134"/>
+                <ListBox x:Name="flightperweeklist" DisplayMemberPath="FlightNumber" HorizontalAlignment="Left" Height="293" VerticalAlignment="Top" Width="134"/>
             </Grid>
         </Expander>
 

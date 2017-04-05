@@ -31,7 +31,7 @@ namespace ScheduleTable
         //周航班总表
         public BindingList<Flight> FlightsPerWeek { get; set; } = new BindingList<Flight>();
         //用于显示的周航班总表
-        public BindingList<Flight> DisplayFlightsPerWeek { get { return AlignTable(FlightsPerWeek); } set { } }
+        public BindingList<Flight> DisplayFlightsPerWeek { get { return AlignTable(FlightsPerWeek); }  }
 
         public BindingList<Flight> FlightsInMonday { get { return FindFlightPerDay(DayOfWeek.Monday); } }
         public BindingList<Flight> FlightsInTuesday { get { return FindFlightPerDay(DayOfWeek.Tuesday); } }
@@ -56,8 +56,16 @@ namespace ScheduleTable
         }
 
         //对齐周航班总表中的所有航班（拆分所有跨日航班）
-        private BindingList<Flight> AlignTable(BindingList<Flight> _DisplayFlightsPerWeek)
+        private BindingList<Flight> AlignTable(BindingList<Flight> flightsperweek)
         {
+            //单独给新局部变量赋值，一定要注意引用类型的直接赋值的情况下，是两个引用类型变量指向同一个内存位置
+            //非常类似于C++的指针。
+            BindingList<Flight> _DisplayFlightsPerWeek = new BindingList<Flight>();
+            foreach(Flight item in flightsperweek)
+            {
+                _DisplayFlightsPerWeek.Add(item);
+            }
+
             //查找所有跨日航班
             var f1 = (from s in _DisplayFlightsPerWeek
                       where s.StartDay != s.EndDay
