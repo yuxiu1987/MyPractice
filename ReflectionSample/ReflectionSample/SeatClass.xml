@@ -1,0 +1,17 @@
+<SeatClass>
+	<SeatClasses>
+		<SeatName>Standard</SeatName>
+    <Length>15</Length>
+    <Width>10</Width>
+	</SeatClasses>
+	<SeatClasses>
+		<SeatName>AdvanceSeat</SeatName>
+    <Length>30</Length>
+		<Width>15</Width>
+	</SeatClasses>
+	<SeatClasses>
+		<SeatName>LuxurySeat</SeatName>
+    <Length>40</Length>
+    <Width>20</Width>
+	</SeatClasses>
+</SeatClass>
