@@ -12,7 +12,7 @@ using System.Xml;
 namespace ReflectionSample
 {
     class Program
-    {
+    {       
 
 
         static void Main(string[] args)
@@ -30,46 +30,17 @@ namespace ReflectionSample
                 list.Add(new SampleClass());
             }
 
-            Type type = typeof(SampleClass);
-            var properties = type.GetProperties();
-
-            for(int i=0;i<nodelist.Count;i++)
+            for(int i =0; i<nodelist.Count ; i++)
             {
-                foreach (var property in properties)
-                {
-                    //根据属性数据类型执行相应赋值操作
-                    switch(property.PropertyType.Name)
-                    {
-                        //如果是Int32型，执行数据转换后赋值
-                        case "Int32":
-                            foreach (XmlNode item in nodelist[i])
-                            {
-                                if (property.Name == item.Name)
-                                {
-                                    property.SetValue(list[i], Convert.ToInt32(item.InnerText));
-                                    break;
-                                }
-                            }
-                            break;
-                        //字符串型，直接赋值
-                        case "String":
-                            foreach (XmlNode item in nodelist[i])
-                            {
-                                if (property.Name == item.Name)
-                                {
-                                    property.SetValue(list[i], item.InnerText);
-                                    break;
-                                }
-                            }
-                            break;
-                    }
-                }
+                list[i] = AutoAssignMethod.AutoAssign(list[i], nodelist[i]) as SampleClass;
             }
 
             SampleClass spobj = new SampleClass();
             object obj = spobj;
-
             Console.WriteLine(obj.GetType().Name);
+
+            double abc = 1.5;
+            Console.WriteLine(abc.GetType().Name);
 
             foreach(var item in list)
             {
@@ -86,7 +57,38 @@ namespace ReflectionSample
         public string SeatName { get; set; }
         public int Length { get; set; }
         public int Width { get; set; }
+    }
 
+    static class AutoAssignMethod
+    {
+        //自动赋值方法
+        public static object AutoAssign(object instance, XmlNode node)
+        {
+            Type type = instance.GetType();
+            var properties = type.GetProperties();         
 
+            foreach(XmlNode nodeitem in node)
+            {
+                //从属性列表中选出与节点名相同的项
+                var findedproperty = (from item in properties
+                         where item.Name == nodeitem.Name
+                         select item).ToList()[0] as PropertyInfo;
+                //根据属性数据类型执行相应赋值操作
+                switch (findedproperty.PropertyType.Name)
+                {
+                    //如果是Int32型，执行数据转换后赋值
+                    case "Int32":
+                                findedproperty.SetValue(instance, Convert.ToInt32(nodeitem.InnerText));
+                                break;
+
+                    //字符串型，直接赋值
+                    case "String":
+                                findedproperty.SetValue(instance, nodeitem.InnerText);
+                                break;
+
+                }
+            }
+            return instance;
+        }
     }
 }
