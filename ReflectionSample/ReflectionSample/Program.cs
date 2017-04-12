@@ -37,10 +37,13 @@ namespace ReflectionSample
 
             SampleClass spobj = new SampleClass();
             object obj = spobj;
+            Type type = obj.GetType();
+            Console.WriteLine(type.Name);
             Console.WriteLine(obj.GetType().Name);
 
             double abc = 1.5;
             Console.WriteLine(abc.GetType().Name);
+            
 
             foreach(var item in list)
             {
