@@ -43,10 +43,7 @@ namespace FlightSystemDesign
 
         public int TotalWeeks { get { return _TotalWeeks; } set { SetProperty(ref (_TotalWeeks), value); } }
         private int _TotalWeeks;
-
-
-
-
+        
         public void DayStep()
         {
             ActiveSettlementEvent();

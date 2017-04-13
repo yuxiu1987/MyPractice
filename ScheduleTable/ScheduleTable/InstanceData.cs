@@ -45,7 +45,7 @@ namespace ScheduleTable
         {
             //在显示用航班表中查找出某天所有航班并转换为BindingList<Flight>
             var f = (from s in DisplayFlightsPerWeek
-                     where s.StartDay == dayofweek
+                     where s.FlightDay == dayofweek
                      select s).ToList();
             BindingList<Flight> bindingflight = new BindingList<Flight>();
             foreach(Flight fl in f)
@@ -68,7 +68,7 @@ namespace ScheduleTable
 
             //查找所有跨日航班
             var f1 = (from s in _DisplayFlightsPerWeek
-                      where s.StartDay != s.EndDay
+                      where s.FlightDay != s.EndDay
                       select s).ToList();
 
 
@@ -85,10 +85,10 @@ namespace ScheduleTable
                 firstday.SetFlight(item);
                 Flight secondday = new Flight();
                 secondday.SetFlight(item);
-                firstday.timelength = item.timelength - new TimeSpan(item.endtime.Hour, item.endtime.Minute, 0);
-                secondday.StartDay = item.EndDay;
+                firstday.timeOfFlight = item.timeOfFlight - new TimeSpan(item.endtime.Hour, item.endtime.Minute, 0);
+                secondday.FlightDay = item.EndDay;
                 secondday.starttime = new DateTime(1900, 1, 1, 0, 0, 0);
-                secondday.timelength = new TimeSpan(item.endtime.Hour, item.endtime.Minute, 0);
+                secondday.timeOfFlight = new TimeSpan(item.endtime.Hour, item.endtime.Minute, 0);
 
 
                 _DisplayFlightsPerWeek.Add(firstday);

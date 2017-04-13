@@ -39,8 +39,8 @@ namespace ScheduleTable
             Flight f1 = new Flight
             {
                 starttime = new DateTime(1900, 1, 1, 0, 0, 0),
-                timelength = new TimeSpan(1, 0, 0),
-                StartDay = DayOfWeek.Monday,
+                timeOfFlight = new TimeSpan(1, 0, 0),
+                FlightDay = DayOfWeek.Monday,
                 FlightNumber = "SLD1001",
                 Depart = "HEL",
                 Arrival = "ARN",
@@ -49,8 +49,8 @@ namespace ScheduleTable
             Flight f2 = new Flight
             {
                 starttime = new DateTime(1900, 1, 1, 22, 30, 0),
-                timelength = new TimeSpan(2, 28, 0),
-                StartDay = DayOfWeek.Monday,
+                timeOfFlight = new TimeSpan(2, 28, 0),
+                FlightDay = DayOfWeek.Monday,
                 FlightNumber = "SLD1003",
                 Depart = "HEL",
                 Arrival = "CPH",
@@ -58,8 +58,8 @@ namespace ScheduleTable
             Flight f3 = new Flight
             {
                 starttime = new DateTime(1900, 1, 1, 15, 30, 0),
-                timelength = new TimeSpan(8, 16, 0),
-                StartDay = DayOfWeek.Wednesday,
+                timeOfFlight = new TimeSpan(8, 16, 0),
+                FlightDay = DayOfWeek.Wednesday,
                 FlightNumber = "SLD501",
                 Depart = "HEL",
                 Arrival = "DXB",
@@ -67,8 +67,8 @@ namespace ScheduleTable
             Flight f4 = new Flight
             {
                 starttime = new DateTime(1900, 1, 1, 20, 30, 0),
-                timelength = new TimeSpan(7, 16, 0),
-                StartDay = DayOfWeek.Friday,
+                timeOfFlight = new TimeSpan(7, 16, 0),
+                FlightDay = DayOfWeek.Friday,
                 FlightNumber = "SLD503",
                 Depart = "HEL",
                 Arrival = "AUH",
@@ -77,8 +77,8 @@ namespace ScheduleTable
             Flight f5 = new Flight
             {
                 starttime = new DateTime(1900, 1, 1, 18, 30, 0),
-                timelength = new TimeSpan(9, 16, 0),
-                StartDay = DayOfWeek.Tuesday,
+                timeOfFlight = new TimeSpan(9, 16, 0),
+                FlightDay = DayOfWeek.Tuesday,
                 FlightNumber = "SLD505",
                 Depart = "HEL",
                 Arrival = "PVG",
@@ -87,8 +87,8 @@ namespace ScheduleTable
             Flight f6 = new Flight
             {
                 starttime = new DateTime(1900, 1, 1, 11, 55, 0),
-                timelength = new TimeSpan(12, 0, 0),
-                StartDay = DayOfWeek.Thursday,
+                timeOfFlight = new TimeSpan(12, 0, 0),
+                FlightDay = DayOfWeek.Thursday,
                 FlightNumber = "SLD507",
                 Depart = "HEL",
                 Arrival = "SFO",
