@@ -88,7 +88,6 @@ namespace ReflectionSample
                     case "String":
                                 findedproperty.SetValue(instance, nodeitem.InnerText);
                                 break;
-
                 }
             }
             return instance;
