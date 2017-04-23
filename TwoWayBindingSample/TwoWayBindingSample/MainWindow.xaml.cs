@@ -26,6 +26,7 @@ namespace TwoWayBindingSample
         }
         
         Airliner boeing707 = new Airliner { TypeName = "Boeing707", TotalPAX = 189, MAXSpeed = 820 };
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //使用赋值运算符将对象绑定到用户控件的Datacontext上

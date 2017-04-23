@@ -11,7 +11,7 @@
         <TextBox x:Name="totalPAXBox" Text="{Binding Path=TotalPAX}" HorizontalAlignment="Left" Height="23" Margin="91,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="MAXSpeedBox" Text="{Binding Path=MAXSpeed}" HorizontalAlignment="Left" Height="23" Margin="91,191,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
         <Button x:Name="button" Content="test" HorizontalAlignment="Left" Margin="461,168,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <Slider x:Name="slider" Minimum="0" Maximum="220" Value="{Binding MAXSpeed}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="91,241,0,0" Width="120"/>
+        <Slider x:Name="slider" Minimum="0" Maximum="220" Value="{Binding ElementName=MAXSpeedBox , Path=Text}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="91,241,0,0" Width="120"/>
 
     </Grid>
 </Window>
