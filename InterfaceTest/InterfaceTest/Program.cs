@@ -10,7 +10,7 @@ namespace InterfaceTest
     {
         static void Main(string[] args)
         {
-            PassengerAirliner B707 = new PassengerAirliner();
+            ICarry B707 = new PassengerAirliner();
             CargoAirliner DC10F = new CargoAirliner();
             DC10F.Carry();
             B707.Carry();
