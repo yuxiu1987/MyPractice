@@ -17,6 +17,8 @@ namespace GameAttackDemo
             while(enemy.HP >0)
             {
                 player.PlayerAttack(player.cannon, r.Next(0, 100), enemy);
+                player.PlayerAttack(player.laser, r.Next(0, 100), enemy);
+                player.PlayerAttack(player.missile, r.Next(0, 100), enemy);
             }
             Console.ReadKey();
         }
@@ -40,6 +42,8 @@ namespace GameAttackDemo
         public IAttack laser = new Laser();
         public IAttack cannon = new Cannon();
         public IAttack missile = new Missile();
+
+        public IAttack weapon = new Weapon();
 
         public void PlayerAttack(IAttack iattack , int rand , EnemySpaceShip target)
         {
@@ -69,13 +73,20 @@ namespace GameAttackDemo
         private int BaseDamage { get; set; } = 5;
         public override void WeaponAttack(EnemySpaceShip target , int rand)
         {
+            Console.WriteLine("Use laser attack!");
             if (rand <= 90)
             {
+                Console.WriteLine("Hit!");
                 Damage = BaseDamage;
             }
-            else Damage = 0;
+            else
+            {
+                Console.WriteLine("Miss!");
+                Damage = 0;
+            }
+            
 
-            Console.WriteLine("Use laser attack!");
+            
             Console.WriteLine("Random is :" + rand);
             Console.WriteLine("Enemy get damage : HP" + Damage);
             target.UnderAttack(Damage);
@@ -93,21 +104,26 @@ namespace GameAttackDemo
         private int BaseDamage { get; set; } = 6;
         public override void WeaponAttack(EnemySpaceShip target, int rand)
         {
+            Console.WriteLine("Use cannon attack!");
             if (rand <= 30)
             {
+                Console.WriteLine("Critical Hit!");
                 Damage = 2 * BaseDamage;
             }
             else if (rand > 30 && rand <= 60)
             {
+                Console.WriteLine("Hit!");
                 Damage = BaseDamage;
             }
-            else Damage = 0;
-            Console.WriteLine("Use cannon attack!");
-            Console.WriteLine("Random is :" + rand);
-            if(rand<=30)
+            else
             {
-                Console.WriteLine("Critical Hit!");
+                Console.WriteLine("Miss!");
+                Damage = 0;
             }
+            
+            
+            Console.WriteLine("Random is :" + rand);
+
             Console.WriteLine("Enemy get damage : HP" + Damage);
             target.UnderAttack(Damage);
             if (target.Isdestroyed)
@@ -123,12 +139,20 @@ namespace GameAttackDemo
         private int BaseDamage { get; set; } = 4;
         public override void WeaponAttack(EnemySpaceShip target , int rand)
         {
+            Console.WriteLine("Use missile attack!");
             if (rand <= 100)
             {
+                Console.WriteLine("Hit!");
                 Damage = BaseDamage;
             }
-            else Damage = 0;
-            Console.WriteLine("Use missile attack!");
+            else
+            {
+                Console.WriteLine("Miss!");
+                Damage = 0;
+            }
+
+                
+            
             Console.WriteLine("Enemy get damage : HP" + Damage);
             target.UnderAttack(Damage);
             if (target.Isdestroyed)
