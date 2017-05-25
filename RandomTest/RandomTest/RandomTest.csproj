@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3EF0EE7F-802F-4D1F-95FA-3FAD4F16B8D5}</ProjectGuid>
+    <ProjectGuid>{837626BE-74A0-4EB9-A243-A6429E278887}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MyGenericTest</RootNamespace>
-    <AssemblyName>MyGenericTest</AssemblyName>
+    <RootNamespace>RandomTest</RootNamespace>
+    <AssemblyName>RandomTest</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

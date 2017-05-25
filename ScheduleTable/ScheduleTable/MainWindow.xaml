@@ -52,7 +52,6 @@
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
-
                     </Style>
                 </Setter.Value>
             </Setter>

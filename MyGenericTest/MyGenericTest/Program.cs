@@ -12,11 +12,23 @@ namespace MyGenericTest
         {
             Maintanence m1 = new Maintanence { loacal = "CKG" };
             ScheduledFlight f1 = new ScheduledFlight { depart = "PVG", };
-            public List<Maintanence, ScheduledFlight> abc  = new List<Maintanence, ScheduledFlight>();
+            
+
+            
         }
+
+        
     }
 
-
+    public class List<T>
+    {
+        private List<T> list;
+        
+        public void AddItem()
+        {
+            list
+        }
+    }
     
 
 

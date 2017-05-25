@@ -30,6 +30,7 @@ namespace ScheduleTable
         #endregion
         //周航班总表
         public BindingList<Flight> FlightsPerWeek { get; set; } = new BindingList<Flight>();
+
         //用于显示的周航班总表
         public BindingList<Flight> DisplayFlightsPerWeek { get { return AlignTable(FlightsPerWeek); }  }
 
@@ -89,8 +90,6 @@ namespace ScheduleTable
                 secondday.FlightDay = item.EndDay;
                 secondday.starttime = new DateTime(1900, 1, 1, 0, 0, 0);
                 secondday.timeOfFlight = new TimeSpan(item.endtime.Hour, item.endtime.Minute, 0);
-
-
                 _DisplayFlightsPerWeek.Add(firstday);
                 _DisplayFlightsPerWeek.Add(secondday);
             }          

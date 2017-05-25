@@ -83,10 +83,7 @@ namespace GameAttackDemo
             {
                 Console.WriteLine("Miss!");
                 Damage = 0;
-            }
-            
-
-            
+            }   
             Console.WriteLine("Random is :" + rand);
             Console.WriteLine("Enemy get damage : HP" + Damage);
             target.UnderAttack(Damage);
@@ -150,9 +147,6 @@ namespace GameAttackDemo
                 Console.WriteLine("Miss!");
                 Damage = 0;
             }
-
-                
-            
             Console.WriteLine("Enemy get damage : HP" + Damage);
             target.UnderAttack(Damage);
             if (target.Isdestroyed)
