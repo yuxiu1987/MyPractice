@@ -1,0 +1,19 @@
+﻿<Window x:Class="ThreadTimerWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ThreadTimerWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
+    <Grid>
+        <ListBox x:Name="dayslistbox" HorizontalAlignment="Left" Height="169" Margin="0,74,0,0" VerticalAlignment="Top" Width="143"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="16" Margin="0,53,0,0" TextWrapping="Wrap" Text="Days List:" VerticalAlignment="Top" Width="79"/>
+        <Button x:Name="startbutton" Content="Start" HorizontalAlignment="Left" Height="27" Margin="182,236,0,0" VerticalAlignment="Top" Width="90" Click="startbutton_Click"/>
+        <TextBlock x:Name="timedisplay" HorizontalAlignment="Left" Height="47" Margin="159,74,0,0" FontSize="40" TextWrapping="Wrap" Text="timedisplay" VerticalAlignment="Top" Width="241"/>
+        <Button x:Name="stopbutton_Copy" Content="Stop" HorizontalAlignment="Left" Height="27" Margin="310,236,0,0" VerticalAlignment="Top" Width="90" Click="stopbutton_Copy_Click"/>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Height="16" Margin="0,248,0,0" TextWrapping="Wrap" Text="Count:" VerticalAlignment="Top" Width="79"/>
+        <TextBlock x:Name="timercount" Height="16" Margin="0,264,438,0" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
