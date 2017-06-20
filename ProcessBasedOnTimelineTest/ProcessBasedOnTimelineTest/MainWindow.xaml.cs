@@ -12,11 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.ComponentModel;
+
 using System.Threading;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ThreadTimerWPF
+namespace ProcessBasedOnTimelineTest
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
@@ -34,6 +35,12 @@ namespace ThreadTimerWPF
         public volatile bool IsRunning = false;
 
         public delegate void UpdataHandle();
+
+        public delegate void AirlinerEventProcessHandle();
+        public event AirlinerEventProcessHandle AirlinerEventProcessEvent;
+
+
+
 
         public void Updata()
         {
@@ -75,7 +82,7 @@ namespace ThreadTimerWPF
         {
             dayslistbox.ItemsSource = curTime.DaysList;
             timercount.DataContext = curTime;
-            timedisplay.DataContext = curTime;            
+            timedisplay.DataContext = curTime;
         }
 
         private void startbutton_Click(object sender, RoutedEventArgs e)
@@ -126,8 +133,7 @@ namespace ThreadTimerWPF
 
         private void add_button_Click(object sender, RoutedEventArgs e)
         {
-            
-        }
-    }   
 
+        }
+    }
 }
