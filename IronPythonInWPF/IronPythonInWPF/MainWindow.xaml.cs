@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using IronPython;
+using IronPython.Hosting;
+using Microsoft.Scripting.Hosting;
 
 namespace IronPythonInWPF
 {
@@ -25,6 +27,19 @@ namespace IronPythonInWPF
         public MainWindow()
         {
             InitializeComponent();
-        }  
+
+            ScriptRuntime scriptRuntime = Python.CreateRuntime();
+            
+            try
+            {
+                dynamic obj = scriptRuntime.UseFile("test.py");
+            }
+            catch
+            {
+                MessageBox.Show("Wrong!");
+            }
+        }   
+
+        
     }
 }
