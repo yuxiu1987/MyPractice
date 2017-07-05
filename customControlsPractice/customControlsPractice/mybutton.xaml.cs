@@ -16,13 +16,14 @@ using System.Windows.Shapes;
 namespace customControlsPractice
 {
     /// <summary>
-    /// UserControl1.xaml 的交互逻辑
+    /// mybutton.xaml 的交互逻辑
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class mybutton : UserControl
     {
-        public UserControl1()
+        public mybutton()
         {
             InitializeComponent();
         }
+
     }
 }
