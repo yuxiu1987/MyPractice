@@ -28,6 +28,14 @@ namespace ThreadTimerWPF
             InitializeComponent();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //设置绑定
+            dayslistbox.ItemsSource = curTime.DaysList;
+            timercount.DataContext = curTime;
+            timedisplay.DataContext = curTime;
+        }
+
         public static CurTime curTime { get; set; } = new CurTime { time = DateTime.Now, TimerCount = 0 };
         BackgroundWorker mybackWorker = new BackgroundWorker();
 
@@ -35,11 +43,7 @@ namespace ThreadTimerWPF
 
         public delegate void UpdataHandle();
 
-        public void Updata()
-        {
-            //其他线程不能直接维护数据源，因此需要Dispatcher来执行一个任务来维护，注意Dispatcher并不是开启一个新线程
-            this.Dispatcher.Invoke(new Action(() => { curTime.DaysList.Add(curTime.time); }));
-        }
+
 
         public void CountTime(object sender, DoWorkEventArgs e)
         {
@@ -53,6 +57,16 @@ namespace ThreadTimerWPF
                 //通过委托去更新数据集合
                 myupdata();
             }
+
+            MessageBox.Show(curTime.DaysList.Count.ToString());
+        }
+
+        public void Updata()
+        {
+            //主线程不能直接维护被绑定到界面的bindingable集合，因此需要主线程的Dispatcher来执行一个任务来维护，注意Dispatcher并不是开启一个新线程
+            //下面lambda表达式中执行的语句是在主线程中执行的，以便WPF的界面维护线程可以访问到该集合
+            //如果是简单的一个变量，如本demo中的 curtime属性，就不需要dispatcher.Invoke方法
+            this.Dispatcher.Invoke(new Action(() => { curTime.DaysList.Add(curTime.time); }));
         }
 
         public void ResetTimer()
@@ -71,12 +85,7 @@ namespace ThreadTimerWPF
             IsRunning = false;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            dayslistbox.ItemsSource = curTime.DaysList;
-            timercount.DataContext = curTime;
-            timedisplay.DataContext = curTime;            
-        }
+
 
         private void startbutton_Click(object sender, RoutedEventArgs e)
         {
@@ -90,6 +99,9 @@ namespace ThreadTimerWPF
             StopTimer();
         }
 
+        /// <summary>
+        /// 时间类
+        /// </summary>
         public class CurTime : INotifyPropertyChanged
         {
             public DateTime time { get { return _time; } set { SetProperty(ref _time, value); } }
