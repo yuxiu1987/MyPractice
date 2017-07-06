@@ -7,13 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="525" Loaded="Window_Loaded">
     <Grid>
-        <ListBox x:Name="dayslistbox" HorizontalAlignment="Left" Height="559" Margin="0,74,0,0" VerticalAlignment="Top" Width="143"/>
+        <ListBox x:Name="dayslistbox" HorizontalAlignment="Left" Height="420" Margin="0,74,0,0" VerticalAlignment="Top" Width="143"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="16" Margin="0,53,0,0" TextWrapping="Wrap" Text="Days List:" VerticalAlignment="Top" Width="79"/>
         <Button x:Name="startbutton" Content="Start" HorizontalAlignment="Left" Height="27" Margin="159,293,0,0" VerticalAlignment="Top" Width="90" Click="startbutton_Click"/>
         <TextBlock x:Name="timedisplay" Background="LightGray" HorizontalAlignment="Left" Height="47" Margin="159,74,0,0" FontSize="40" TextWrapping="Wrap" Text="{Binding time}" VerticalAlignment="Top" Width="241"/>
         <Button x:Name="stopbutton_Copy" Content="Stop" HorizontalAlignment="Left" Height="27" Margin="254,293,0,0" VerticalAlignment="Top" Width="90" Click="stopbutton_Copy_Click"/>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Height="16" Margin="159,164,0,0" TextWrapping="Wrap" Text="Count:" VerticalAlignment="Top" Width="79"/>
         <TextBlock x:Name="timercount" Background="LightGray" Height="16" Margin="159,185,279,0" TextWrapping="Wrap" Text="{Binding TimerCount}" VerticalAlignment="Top"/>
-        <Button x:Name="add_button" Content="Add" HorizontalAlignment="Left" Margin="31,29,0,0" VerticalAlignment="Top" Width="75" Click="add_button_Click"/>
+        <Button x:Name="add_button" Content="Add" Visibility="Collapsed" HorizontalAlignment="Left" Margin="31,29,0,0" VerticalAlignment="Top" Width="75" Click="add_button_Click"/>
+        <DockPanel x:Name="dock" Background="Gray"  HorizontalAlignment="Left" Height="100" LastChildFill="False" VerticalAlignment="Top" Width="100" Margin="267,394,0,0"/>
     </Grid>
 </Window>
