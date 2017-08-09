@@ -37,10 +37,10 @@ namespace ThreadTimerWPF
 
         public void Updata()
         {
-            //其他线程不能直接维护数据源，因此需要Dispatcher来执行一个任务来维护，注意Dispatcher并不是开启一个新线程
+            
             this.Dispatcher.Invoke(new Action(() => { curTime.DaysList.Add(curTime.time); }));
         }
-
+        
         public void CountTime(object sender, DoWorkEventArgs e)
         {
             UpdataHandle myupdata = new UpdataHandle(Updata);
