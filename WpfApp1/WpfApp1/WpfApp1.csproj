@@ -102,9 +102,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Mercator_Projection.svg.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Resource Include="Mercator_projection_SW - gray.jpg" />
     <Content Include="Mercator_projection_SW.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

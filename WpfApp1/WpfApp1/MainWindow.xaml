@@ -8,7 +8,7 @@
         Title="MainWindow" Height="836.747" Width="1399">
     <Grid   Height="873" Width="1029" Loaded="mygrid_Loaded">
         <Grid x:Name="MapLayer" Height="873" Width="1029">
-            <Image Source="Mercator_projection_SW - gray.jpg" Stretch="Fill" Height="873" Width="1029" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <Image Source="Mercator_projection_SW.jpg" Stretch="Fill" Height="873" Width="1029" HorizontalAlignment="Left" VerticalAlignment="Top" />
         </Grid>
         <Grid x:Name="RouteLayer" Height="873" Width="1029"/>
         <Grid x:Name="PushpinLayer" Height="873" Width="1029"/>

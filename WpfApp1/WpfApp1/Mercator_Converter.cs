@@ -44,18 +44,53 @@ namespace WpfApp1
             return PtInMap;
         }
 
-        public static PositionOnMap GetMidPTonMap(Route rte)
+        /// <summary>
+        /// 求出大圆中点的经纬度
+        /// </summary>
+        /// <param name="rte"></param>
+        /// <returns></returns>
+        public static PositionOnEarth GetMidPTonEarth(Route rte)
         {
-            var lambda12 = (rte.EndOnEarth.longitude - rte.StartOnEarth.longitude) * (Math.PI / 180);
-            var fy1 = rte.StartOnEarth.latitude * (Math.PI / 180);
-            var fy2 = rte.EndOnEarth.latitude * (Math.PI / 180);
-            var temp = Math.Sin(lambda12) / (Math.Cos(fy1) * Math.Tan(fy2) - Math.Sin(fy1) * Math.Cos(lambda12));
+            var fai1 = rte.StartOnEarth.latitude * (Math.PI / 180);
+            var fai2 = rte.EndOnEarth.latitude * (Math.PI / 180);
+            var lambda1 = rte.StartOnEarth.longitude * (Math.PI / 180);
+            var lambda2 = rte.EndOnEarth.longitude * (Math.PI / 180);
+
+            var lambda12 = lambda2 - lambda1;
+
+            var temp = Math.Sin(lambda12) / (Math.Cos(fai1) * Math.Tan(fai2) - Math.Sin(fai1) * Math.Cos(lambda12));
 
             var alpha1 = Math.Atan(temp);
-            
 
+            var temp1 = Math.Sin(alpha1) * Math.Cos(fai1);
+            var alpha0 = Math.Asin(temp1);
 
-            return 
+            var temp2 = Math.Tan(fai1) / Math.Cos(alpha1);
+            var theta01 = Math.Atan(temp2);
+
+            var temp3 = (Math.Sin(alpha0) * Math.Sin(theta01)) / Math.Cos(theta01);
+            var lambda01 = Math.Atan(temp3);
+
+            var lambda0 = lambda1 - lambda01;
+
+            double lambdamid;
+            if(Math.Abs(lambda12) <= Math.PI)
+            {
+                lambdamid = lambda2 - lambda12 / 2;
+            }
+            else
+            {
+                lambda12 = 360 * (Math.PI / 180) - lambda12;
+                lambdamid = lambda2 - lambda12 / 2;
+            }
+
+            var temp4 = (1 / Math.Tan(alpha0)) * Math.Sin(lambdamid - lambda0);
+            var faimid = Math.Atan(temp4);
+
+            var temp5 = Math.PI / 180;
+            PositionOnEarth ptmid = new PositionOnEarth { longitude = lambdamid/temp5, latitude = faimid/temp5 };
+
+            return ptmid;
         }
     }
 
@@ -74,7 +109,13 @@ namespace WpfApp1
     public struct Route
     {
         public PositionOnEarth StartOnEarth;
-        public PositionOnEarth MidOnEarth;
+        public PositionOnEarth MidOnEarth
+        { get
+            {
+                return Mercator_Converter.GetMidPTonEarth(this);
+            }
+                
+        }
         public PositionOnEarth EndOnEarth;
 
         public PositionOnMap StartOnMap { get { return Mercator_Converter.GetPTOnMap(StartOnEarth); } }
