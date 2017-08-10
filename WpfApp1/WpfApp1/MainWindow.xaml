@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="836.747" Width="1399">
+        Title="MainWindow" Height="968.747" Width="1399">
     <Grid   Height="873" Width="1029" Loaded="mygrid_Loaded">
-        <Grid x:Name="MapLayer" Height="873" Width="1029">
+        <Grid x:Name="MapLayer" Height="873" Width="1029" Margin="0,0,0,130">
+            <Image Source="Mercator_projection_SW.jpg" Stretch="Fill" Height="873" Width="1029" HorizontalAlignment="Left" VerticalAlignment="Top" />
             <Image Source="Mercator_projection_SW.jpg" Stretch="Fill" Height="873" Width="1029" HorizontalAlignment="Left" VerticalAlignment="Top" />
         </Grid>
         <Grid x:Name="RouteLayer" Height="873" Width="1029"/>

@@ -48,7 +48,7 @@ namespace WpfApp1
             Route route5 = new Route { StartOnEarth = depart, EndOnEarth = end5, StartName = "Shanghai(PVG)", EndName = "Shanghai(PVG)" };
             Route route6 = new Route { StartOnEarth = depart, EndOnEarth = end6, StartName = "Shanghai(PVG)", EndName = "Helsiki(HEL)" };
 
-            Route route7 = new Route { StartOnEarth = end5, EndOnEarth = end4, EndName = "Los Angeles(LAX)" };
+     //       Route route7 = new Route { StartOnEarth = end5, EndOnEarth = end4, EndName = "Los Angeles(LAX)" };
             Route route8 = new Route { StartOnEarth = end5, EndOnEarth = end6, EndName = "Helsiki(HEL)" };
 
             RouteList.Add(route1);
@@ -57,7 +57,7 @@ namespace WpfApp1
             RouteList.Add(route4);
             RouteList.Add(route5);
             RouteList.Add(route6);
-            RouteList.Add(route7);
+       //     RouteList.Add(route7);
             RouteList.Add(route8);
 
         }

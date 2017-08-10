@@ -8,6 +8,11 @@ namespace WpfApp1
 {
     public static class Mercator_Converter
     {
+        /// <summary>
+        /// 将地理坐标转换为地图坐标（坐标原点为左上角，输入数据为角度制）
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
         public static PositionOnMap GetPTOnMap(PositionOnEarth pos)
         {
             double longitude = pos.longitude;
